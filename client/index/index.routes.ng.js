@@ -7,5 +7,15 @@ angular.module('pdaApp')
         url: '/',
         templateUrl: 'client/index/index.view.ng.html',
         controller: 'IndexCtrl'
+      }).state('login', {
+        url: '/login',
+        template: '<login></login>'
+      }).state('register', {
+        url: '/register',
+        template: '<register></register>'
+      })
+      .state('reset-password', {
+        url: '/reset-password',
+        template: '<reset-password></reset-password>'
       });
   });
