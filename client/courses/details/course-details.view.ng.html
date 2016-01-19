@@ -1,0 +1,17 @@
+  <div layout="column">
+    <form class="md-whiteframe-z1" ng-submit="save()" name="form" novalidate>
+      <p>Dodaj kurs</p>
+
+      <md-input-container>
+        <label>Nazwa</label>
+        <input ng-model="newCourse.name" placeholder="Nazwa">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Opis</label>
+        <input ng-model="newCourse.description" placeholder="Opis">
+      </md-input-container>
+
+      <input class="md-button" type="submit" value="Dodaj">
+    </form>
+  </div>

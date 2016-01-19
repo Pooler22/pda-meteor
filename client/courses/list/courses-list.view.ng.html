@@ -1,0 +1,29 @@
+
+  <div layout="column">
+    <md-list>
+      <md-subheader class="md-no-sticky">Kursy - wybierz kurs aby go rozpocząć</md-subheader>
+      <md-list-item dir-paginate="course in courses | itemsPerPage: perPage"
+      total-items="coursesCount" current-page='page' ng-click="remove(course)"
+      class="secondary-button-padding">
+        <div class="md-list-item-text" layout="row">
+          <h4>{{ course.name }} - {{ course.description }}</h4>
+          <md-button ng-click="remove(course)" class="md-secondary">Rozpocznij kurs</md-button>
+        </div>
+      </md-list-item>
+    </md-list>
+
+    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+
+    <div layout="column">
+      <md-input-container>
+        <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">
+      </md-input-container>
+
+      <p>Sotruj:</p>
+
+      <md-select ng-model="orderProperty">
+        <md-option value="1">Rosnąco</md-option>
+        <md-option value="-1">Malejąco</md-option>
+      </md-select>
+    </div>
+  </div>

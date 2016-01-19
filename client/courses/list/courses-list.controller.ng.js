@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('MainCtrl', function($scope) {
+  .controller('CourseListCtrl', function($scope) {
     $scope.page = 1
     $scope.perPage = 10
     $scope.sort = {
@@ -28,13 +28,6 @@ angular.module('pdaApp')
           parseInt($scope.getReactively('perPage')))
       }, $scope.getReactively('search')];
     });
-
-    $scope.save = function() {
-      if ($scope.form.$valid) {
-        Courses.insert($scope.newCourse);
-        $scope.newCourse = undefined;
-      }
-    };
 
     $scope.remove = function(course) {
       Courses.remove({
