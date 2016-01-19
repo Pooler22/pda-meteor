@@ -39,6 +39,10 @@ angular.module('pdaApp')
       $scope.page = newPage;
     };
 
+    $scope.startCourse = function(course) {
+      location.href = '/courses/details/' + course._id;
+    };
+
     return $scope.$watch('orderProperty', function() {
       if ($scope.orderProperty) {
         $scope.sort = {

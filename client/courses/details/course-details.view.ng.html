@@ -1,17 +1,13 @@
-  <div layout="column">
-    <form class="md-whiteframe-z1" ng-submit="save()" name="form" novalidate>
-      <p>Dodaj kurs</p>
+  <div layout="column" layout-padding>
+    <p>Kurs: {{ course.name }}</p>
+      <md-content layout-padding class="md-whiteframe-3dp">
 
-      <md-input-container>
-        <label>Nazwa</label>
-        <input ng-model="newCourse.name" placeholder="Nazwa">
-      </md-input-container>
-
-      <md-input-container>
-        <label>Opis</label>
-        <input ng-model="newCourse.description" placeholder="Opis">
-      </md-input-container>
-
-      <input class="md-button" type="submit" value="Dodaj">
-    </form>
+        <md-tabs md-dynamic-height md-border-bottom md-autoselect>
+          <md-tab ng-repeat="page in course.pages" label="{{ page.title }}">
+            <md-content class="md-padding">
+              <p>{{ page.description }}</p>
+            </md-content>
+            </md-tab>
+          </md-tabs>
+      </md-content>
   </div>

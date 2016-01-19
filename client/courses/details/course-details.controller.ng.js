@@ -1,12 +1,11 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseAddCtrl', function($scope) {
-
-    $scope.save = function() {
-      if ($scope.form.$valid) {
-        Courses.insert($scope.newCourse);
-        $scope.newCourse = undefined;
-      }
-    };
+  .controller('CourseDetailsCtrl', function($scope, $stateParams) {
+    $scope.subscribe('courses');
+    $scope.helpers({
+      course: function() {
+        return Courses.findOne($stateParams.courseId);
+      },
+    });
   });

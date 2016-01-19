@@ -13,3 +13,14 @@ Courses.allow({
     return true;
   }
 });
+
+Meteor.methods({
+  course: function(courseAttributes) {
+    var user = Meteor.user(),
+      courseWithSameLink = Courses.findOne({
+        _id: courseAttributes._id
+      });
+
+    return courseId;
+  }
+});

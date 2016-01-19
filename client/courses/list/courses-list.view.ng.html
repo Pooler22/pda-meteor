@@ -3,11 +3,11 @@
     <md-list>
       <md-subheader class="md-no-sticky">Kursy - wybierz kurs aby go rozpocząć</md-subheader>
       <md-list-item dir-paginate="course in courses | itemsPerPage: perPage"
-      total-items="coursesCount" current-page='page' ng-click="remove(course)"
+      total-items="coursesCount" current-page='page' ng-click="startCourse(course)"
       class="secondary-button-padding">
         <div class="md-list-item-text" layout="row">
           <h4>{{ course.name }} - {{ course.description }}</h4>
-          <md-button ng-click="remove(course)" class="md-secondary">Rozpocznij kurs</md-button>
+          <md-button ng-click="startCourse(course)" class="md-secondary">Rozpocznij kurs</md-button>
         </div>
       </md-list-item>
     </md-list>
