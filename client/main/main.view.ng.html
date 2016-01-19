@@ -6,7 +6,7 @@
       <p>Dodaj kurs</p>
       <md-input-container>
         <label>Nazwa</label>
-        <input ng-model="newThing.name" placeholder="Name">
+        <input ng-model="newCourse.name" placeholder="Name">
       </md-input-container>
       <input class="md-button" type="submit" value="Add">
     </form>
@@ -22,13 +22,13 @@
     </div>
 
     <ul>
-      <li dir-paginate="thing in things | itemsPerPage: perPage" total-items="thingsCount" current-page='page'>
-        <p>{{ thing.name }} <button ng-click="remove(thing)">&times;</button></p>
+      <li dir-paginate="course in courses | itemsPerPage: perPage" total-items="coursesCount" current-page='page'>
+        <p>{{ course.name }} <button ng-click="remove(course)">&times;</button></p>
       </li>
     </ul>
     <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
 
-    <p>Liczba wszystkich kursów: {{thingsCount}}</p>
+    <p>Liczba wszystkich kursów: {{coursesCount}}</p>
   </div>
   <span flex=""></span>
 </div>
