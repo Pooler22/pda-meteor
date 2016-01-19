@@ -1,4 +1,24 @@
-'use strict';
+'use strict'
 
 angular.module('pdaApp')
-  .controller('LoginCtrl', function($scope) {});
+  .controller('LoginCtrl', function($scope, $reactive, $state) {
+    $reactive(this).attach($scope);
+
+    this.credentials = {
+      email: '',
+      password: ''
+    };
+
+    this.error = '';
+
+    this.login = () => {
+      Meteor.loginWithPassword(this.credentials.email, this.credentials.password, (
+        err) => {
+        if (err) {
+          this.error = err;
+        } else {
+          $state.go('index');
+        }
+      });
+    };
+  });

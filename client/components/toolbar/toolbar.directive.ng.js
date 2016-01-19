@@ -20,6 +20,7 @@ angular.module('pdaApp')
 
         this.logout = () => {
           Accounts.logout();
+          $state.go('index');
         };
       }
     };

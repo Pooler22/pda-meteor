@@ -6,6 +6,6 @@ angular.module('pdaApp')
       .state('reset-password', {
         url: '/reset-password',
         templateUrl: 'client/auth/reset-password/reset-password.view.ng.html',
-        controller: 'ResetPasstord'
+        controller: 'ResetPasstordCtrl'
       });
   });
