@@ -6,6 +6,10 @@ Meteor.startup(function() {
       'pages': [{
         'title': 'Wstęp',
         'description': 'opis',
+        'exercise': [{
+          'language': 'C++',
+          'test': 'test'
+        }]
       }, {
         'title': 'Rozdział 1',
         'description': 'opis1',
