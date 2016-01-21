@@ -1,13 +1,36 @@
-  <div layout="column" layout-padding>
+<div layout="column" layout-padding>
+  <md-toolbar layout="row">
     <p>Kurs: {{ course.name }}</p>
-      <md-content layout-padding class="md-whiteframe-3dp">
+    <span flex></span>
+    <md-button class="md-raised">
+      Następna strona
+    </md-button>
+  </md-toolbar>
 
-        <md-tabs md-dynamic-height md-border-bottom md-autoselect>
-          <md-tab ng-repeat="page in course.pages" label="{{ page.title }}">
-            <md-content class="md-padding">
-              <p>{{ page.description }}</p>
+  <md-content layout-padding class="md-whiteframe-3dp">
+
+    <md-tabs md-dynamic-height md-border-bottom md-autoselect>
+      <md-tab ng-repeat="page in course.pages" label="{{ page.title }}">
+        <md-content class="md-padding" layout="column">
+          <p>{{ page.description }}</p>
+          <div ng-if="page.exercise !== undefined" layout="column" layout-padding>
+
+            <md-input-container>
+              <label>Twój kod</label>
+              <textarea></textarea>
+            </md-input-container>
+            
+            <md-content>
+              Wynik testów
             </md-content>
-            </md-tab>
-          </md-tabs>
-      </md-content>
-  </div>
+
+            <div>
+              <md-button class="md-raised md-warn">Uruchom</md-button>
+            </div>
+
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
