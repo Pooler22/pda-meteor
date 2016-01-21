@@ -20,7 +20,6 @@ Meteor.methods({
       courseWithSameLink = Courses.findOne({
         _id: courseAttributes._id
       });
-
     return courseId;
   }
 });

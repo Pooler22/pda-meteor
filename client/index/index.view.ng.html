@@ -6,8 +6,8 @@
       </div>
     </md-toolbar>
     <div layout="column" layout-fill layout-margin layout-padding>
-      <h2>Witaj na stronie projektu "Akademia wzorców projektowych".</h2>
-      <h4>Aby zacząć naukę zarejestruj się bądź zaloguj na już istniejące konto.</h4>
+      <h2 ng-hide="toolbar.isLoggedIn">Witaj na stronie projektu "Akademia wzorców projektowych".</h2>
+      <h4 ng-hide="toolbar.isLoggedIn">Aby zacząć naukę zarejestruj się bądź zaloguj na już istniejące konto.</h4>
 
       <md-button ng-href="/login" ng-hide="toolbar.isLoggedIn">Logowanie</md-button>
       <md-button ng-href="/register" ng-hide="toolbar.isLoggedIn">Rejestracja</md-button>
@@ -17,3 +17,5 @@
     </div>
   </md-whiteframe>
 </md-content>
+
+<exec></exec>
