@@ -10,17 +10,17 @@ angular.module('pdaApp')
     $scope.orderProperty = '1'
 
     $scope.helpers({
-      courses: function() {
+      courses: () => {
         return Courses.find({}, {
           sort: $scope.getReactively('sort')
         });
       },
-      coursesCount: function() {
+      coursesCount: () => {
         return Counts.get('numberOfCourses');
       }
     });
 
-    $scope.subscribe('courses', function() {
+    $scope.subscribe('courses', () => {
       return [{
         sort: $scope.getReactively('sort'),
         limit: parseInt($scope.getReactively('perPage')),
@@ -29,7 +29,7 @@ angular.module('pdaApp')
       }, $scope.getReactively('search')];
     });
 
-    $scope.remove = function(course) {
+    $scope.remove = (course) => {
       Courses.remove({
         _id: course._id
       });

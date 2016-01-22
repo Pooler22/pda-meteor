@@ -6,24 +6,22 @@ angular.module('pdaApp')
       restrict: 'E',
       templateUrl: 'client/components/exec/exec.view.ng.html',
       controllerAs: 'exec',
-      controller: function($scope, $reactive) {
-        $reactive(this).attach($scope);
-
-        this.addCode = function(newCode) {
-          this.codes.push({
+      controller: function($scope) {
+        $scope.addCode = function(newCode) {
+          $scope.codes.push({
             text: newCode
           });
         };
 
-        this.helpers({
+        $scope.helpers({
           console: () => {
             return Exec.Console.find();
           }
         });
 
-        this.helpers({
+        $scope.helpers({
           submit: (event) => {
-            //var cmd = this.value;
+            //var cmd = $scope.value;
             Meteor.call('exec', cmd);
             //event.target.cmd.value = "";
             return false;
