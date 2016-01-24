@@ -15,11 +15,13 @@
           <p>{{ page.description }}</p>
           <div ng-if="page.exercise !== undefined" layout="column" layout-padding>
 
+            <exec></exec>
+
             <md-input-container>
               <label>Twój kod</label>
               <textarea></textarea>
             </md-input-container>
-            
+
             <md-content>
               Wynik testów
             </md-content>

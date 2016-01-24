@@ -1,9 +1,8 @@
-<div name="cmd">
-<textarea rows="30" cols="70">
-  
-</textarea>
-<form class='cmd'>
-    <label for="cmd">Command:</label><input name="cmd" id="cmd" type="text" placeholder="Type your command" />
-    <button type="submit" id="submit">Submit</button>
-</form>
-</div>
+<md-input-container>
+<label>Kod użytkownika</label>
+<input type="text" ng-model="exec.userCode">
+
+</md-input-container>
+
+<md-button ng-click="exec.submit()">Run app!</md-button>
+<md-label >{{ exec.resoult }}</md-label>

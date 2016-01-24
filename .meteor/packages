@@ -31,3 +31,4 @@ msavin:mongol
 sanjo:jasmine
 velocity:html-reporter
 angular-meteor-auth
+redcap3000:run-cli

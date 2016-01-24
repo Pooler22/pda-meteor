@@ -15,3 +15,5 @@ if (Meteor.isCordova) {
 } else {
   angular.element(document).ready(onReady);
 }
+
+Exec.allowClientCalls = true;
