@@ -1,13 +1,15 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseListCtrl', function($scope) {
-    $scope.page = 1
-    $scope.perPage = 10
+  .controller('CourseListCtrl', function($scope, $reactive) {
+    $reactive(this).attach($scope);
+
+    $scope.page = 1;
+    $scope.perPage = 10;
     $scope.sort = {
       name_sort: 1
     };
-    $scope.orderProperty = '1'
+    $scope.orderProperty = '1';
 
     $scope.helpers({
       courses: () => {
@@ -29,11 +31,7 @@ angular.module('pdaApp')
       }, $scope.getReactively('search')];
     });
 
-    $scope.remove = (course) => {
-      Courses.remove({
-        _id: course._id
-      });
-    };
+
 
     $scope.pageChanged = function(newPage) {
       $scope.page = newPage;
@@ -41,6 +39,16 @@ angular.module('pdaApp')
 
     $scope.startCourse = function(course) {
       location.href = '/courses/details/' + course._id;
+    };
+
+    $scope.startCourse = function(course) {
+      location.href = '/courses/edit/' + course._id;
+    };
+
+    $scope.removeCourse = function(course) {
+      Courses.remove({
+        _id: course._id
+      });
     };
 
     return $scope.$watch('orderProperty', function() {

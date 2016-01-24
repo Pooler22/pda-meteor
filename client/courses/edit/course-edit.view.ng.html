@@ -1,0 +1,64 @@
+<div layout="column" layout-padding>
+  <md-content layout-padding class="md-whiteframe-3dp">
+    <div layout="row">
+      <md-input-container>
+        <label>Nazwa</label>
+        <input ng-model="course.name">
+      </md-input-container>
+      <span flex></span>
+      <md-input-container>
+        <label>Opis</label>
+        <textarea ng-model="course.description"></textarea>
+      </md-input-container>
+      <span flex></span>
+      <md-switch ng-model="course.public">
+        Dostęp publiczny
+      </md-switch>
+      <span flex></span>
+      <md-button ng-click="updateCourse(course)">Zapisz</md-button>
+      <md-button ng-click="backToListCourse()">Wróć</md-button>
+    </div>
+
+    <md-tabs md-dynamic-height md-border-bottom md-autoselect>
+      <md-tab ng-repeat="page in course.pages" label="{{ page.title }}">
+        <md-content class="md-padding" layout="column">
+          <md-input-container>
+            <label>Nazwa strony</label>
+            <input ng-model="page.title">
+          </md-input-container>
+          <md-input-container>
+            <label>Treść strony</label>
+            <textarea ng-model="page.description"></textarea>
+          </md-input-container>
+
+          <md-switch ng-model="page.haveExercise">
+            Strona z ćwiczeniem
+          </md-switch>
+
+          <div ng-if="page.haveExercise" layout="column">
+
+            <md-input-container>
+              <label>Kod tstujący</label>
+              <textarea ng-model="page.testCode"></textarea>
+            </md-input-container>
+
+            <md-input-container>
+              <label>Kod początkowy dla użytkownika</label>
+              <textarea ng-model="page.startUserCode"></textarea>
+            </md-input-container>
+
+            <md-input-container>
+              <label>Rozwiązanie</label>
+              <textarea ng-model="page.solution"></textarea>
+            </md-input-container>
+
+            <div>
+              <md-button class="md-raised md-warn">Uruchom</md-button>
+            </div>
+
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
