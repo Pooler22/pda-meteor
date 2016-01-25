@@ -1,6 +1,6 @@
-Pages = new Mongo.Collection('pages');
+Exercises = new Mongo.Collection('exercises');
 
-Pages.allow({
+Exercises.allow({
   insert: function(userId, thing) {
     thing.name_sort = thing.name.toLowerCase();
     return true;
@@ -15,11 +15,11 @@ Pages.allow({
 });
 
 Meteor.methods({
-  page: function(pageAttributes) {
+  exercise: function(exerciseAttributes) {
     var user = Meteor.user(),
-      pageWithSameLink = Pages.findOne({
-        _id: pageAttributes._id
+      exerciseWithSameLink = Exercises.findOne({
+        _id: exerciseAttributes._id
       });
-    return pageId;
+    return exerciseId;
   }
 });

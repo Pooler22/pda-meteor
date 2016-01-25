@@ -16,7 +16,7 @@ angular.module('pdaApp')
         $set: {
           name: $scope.course.name,
           description: $scope.course.description,
-          public: $scope.course.public,
+          isPublic: $scope.course.isPublic,
         }
       });
     };
