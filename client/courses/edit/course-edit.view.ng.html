@@ -1,5 +1,6 @@
 <div layout="column" layout-padding>
   <md-content layout-padding class="md-whiteframe-3dp">
+<form ng-submit="update()">
     <div layout="row">
       <md-input-container>
         <label>Nazwa</label>
@@ -15,7 +16,7 @@
         Dostęp publiczny
       </md-switch>
       <span flex></span>
-      <md-button ng-click="updateCourse(course)">Zapisz</md-button>
+      <md-button type="submit">Zapisz</md-button>
       <md-button ng-click="backToListCourse()">Wróć</md-button>
     </div>
 
@@ -60,5 +61,6 @@
         </md-content>
       </md-tab>
     </md-tabs>
+  </form>
   </md-content>
 </div>

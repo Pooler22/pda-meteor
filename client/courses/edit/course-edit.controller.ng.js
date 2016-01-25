@@ -1,29 +1,35 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseEditCtrl', function($scope, $stateParams) {
+  .controller('CourseEditCtrl', function($scope, $stateParams, $reactive) {
     $scope.subscribe('courses');
     $scope.subscribe('userProgress');
 
     $scope.helpers({
       course: function() {
         return Courses.findOne($stateParams.courseId);
-      },
-      updateCourse: function(course) {
-        Courses.update($stateParams.courseId, {
-          $set: {
-            $course: course
-          }
-        });
       }
     });
 
-    $scope.removeCourse = function(course) {
-      Courses.update(course._id, course);
+    $scope.update = function() {
+      Courses.update($scope.course._id, {
+        $set: {
+          name: $scope.course.name,
+          description: $scope.course.description,
+          public: $scope.course.public,
+        }
+      });
     };
 
-    $scope.backToListCourse = function(course) {
+    $scope.updateCourse = function(element, newValue) {
+      Courses.update($scope.course._id, {
+        $set: {
+          element: newValue
+        }
+      });
+    };
+
+    $scope.backToListCourse = function() {
       location.href = '/courses';
     };
-
   });
