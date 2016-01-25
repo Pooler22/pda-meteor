@@ -1,9 +1,10 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseEditCtrl', function($scope, $stateParams, $reactive) {
+  .controller('CourseEditCtrl', function($scope, $stateParams, $reactive,
+    $state) {
     $scope.subscribe('courses');
-    $scope.subscribe('userProgress');
+    $scope.subscribe('pages');
 
     $scope.helpers({
       course: function() {
@@ -30,6 +31,25 @@ angular.module('pdaApp')
     };
 
     $scope.backToListCourse = function() {
-      location.href = '/courses';
+      $state.go('courses-list');
+    };
+
+    $scope.findPages = function() {
+      var pages = [];
+      $scope.course.pages.forEach(function(item) {
+        pages = Pages.findOne(item);
+      });
+      return pages;
+    };
+
+    $scope.save = function() {
+      if ($scope.form.$valid) {
+        Courses.update($scope.course._id, {
+          $push: {
+            "pages": Pages.insert($scope.newPage)
+          }
+        });
+        $scope.newPage = undefined;
+      }
     };
   });

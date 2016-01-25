@@ -2,7 +2,6 @@
 
 angular.module('pdaApp')
   .controller('CourseAddCtrl', function($scope, $state) {
-
     $scope.save = function() {
       if ($scope.form.$valid) {
         $state.go('courses-edit', {
