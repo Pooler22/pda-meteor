@@ -36,7 +36,7 @@ CoursesSchema = new SimpleSchema({
     type: Boolean,
   },
   "pages": {
-    type: String,
+    type: [String],
     optional: true
   }
 });

@@ -3,6 +3,7 @@
 angular.module('pdaApp')
   .controller('CourseEditCtrl', function($scope, $stateParams, $reactive,
     $state) {
+    $reactive(this).attach($scope);
     $scope.subscribe('courses');
     $scope.subscribe('pages');
 
@@ -11,6 +12,15 @@ angular.module('pdaApp')
         return Courses.findOne($stateParams.courseId);
       }
     });
+
+    $scope.getPages = () => {
+      var pagesTmp = [];
+      // Courses.findOne($stateParams.courseId).pages.forEach(function(item) {
+      //   pagesTmp.push(Pages.findOne());
+      // });
+      console.log(pagesTmp);
+      return pagesTmp;
+    };
 
     $scope.update = function() {
       Courses.update($scope.course._id, {
@@ -34,13 +44,7 @@ angular.module('pdaApp')
       $state.go('courses-list');
     };
 
-    $scope.findPages = function() {
-      var pages = [];
-      $scope.course.pages.forEach(function(item) {
-        pages = Pages.findOne(item);
-      });
-      return pages;
-    };
+
 
     $scope.save = function() {
       if ($scope.form.$valid) {
