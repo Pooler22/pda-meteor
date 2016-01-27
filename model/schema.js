@@ -53,9 +53,26 @@ PagesSchema = new SimpleSchema({
     type: String,
     optional: true
   },
+  "startupFileName": {
+    type: String,
+    optional: true
+  },
+  "files": {
+    type: [{
+      "fileName": {
+        type: String,
+        optional: true
+      },
+      "fileCode": {
+        type: String,
+        optional: true
+      }
+    }],
+    optional: true
+  }
 });
 
-Pages.attachSchema(PagesSchema);
+//Pages.attachSchema(PagesSchema);
 
 ExercisesSchema = new SimpleSchema({
   "_id": {

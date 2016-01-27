@@ -39,9 +39,45 @@
           </md-switch>
 
           <md-input-container>
+            <label>Nazwa pliku użytkownika</label>
+            <textarea ng-model="page.startupFileName"></textarea>
+          </md-input-container>
+
+          <md-input-container>
             <label>Kod początkowy</label>
             <textarea ng-model="page.startupCode"></textarea>
           </md-input-container>
+
+          <md-list flex>
+            <md-subheader>Pliki dodatkowe</md-subheader>
+            <md-list-item ng-repeat="item in page.files" class="md-whiteframe-4dp">
+              <md-content layout="column" flex>
+              <md-input-container>
+                <label>Nazwa pliku</label>
+                <textarea ng-model="item.fileName"></textarea>
+              </md-input-container>
+              <md-input-container>
+                <label>Treść pliku</label>
+                <textarea ng-model="item.fileCode"></textarea>
+              </md-input-container>
+              <md-button ng-click="removeFile(page._id, item.fileName)">Usuń plik</md-button>
+            </md-content>
+             </md-list-item>
+          </md-list>
+
+          <md-content ng-model="newFile" layout="column" class="md-whiteframe-4dp" layout-padding>
+            <md-subheader>Dodaj plik dodatkowy:</md-subheader>
+            <md-input-container>
+              <label>Nazwa pliku</label>
+              <textarea ng-model="newFile.fileName"></textarea>
+            </md-input-container>
+            <md-input-container>
+              <label>Kod pliku</label>
+              <textarea ng-model="newFile.fileCode"></textarea>
+            </md-input-container>
+            <md-button ng-click="addFile(page._id, newFile)">Dodaj plik</md-button>
+          </md-content>
+
 
           <md-content>
             <label>Zakazane słowa</label>

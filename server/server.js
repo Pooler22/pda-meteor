@@ -8,12 +8,34 @@ Meteor.startup(function() {
   Meteor.methods({
 
     prepareStructure: function(courseId, UserId) {
-      var pagesIds = Pages.find({
+      console.log(UserId);
+      var pages = Pages.find({
         "ownerId": courseId
       }).fetch();
-      for (var i = 0; i < pagesIds.length; i++) {
+      for (var i = 0; i < pages.length; i++) {
         Meteor.call('runCode', "mkdir -p usersCodes/" + courseId +
-          "/" + pagesIds[i]._id + "/" + UserId);
+          "/" + pages[i]._id + "/" + UserId + "/");
+
+        var command = "cd usersCodes/" + courseId + "/" + pages[i]._id +
+          "/" + UserId + " && ";
+        var tmpName;
+
+        for (var j = 0; j < pages[i].files.length; j++) {
+          tmpName = pages[i].files[j].fileName;
+          command += ("(test -e " + tmpName + " || touch" + tmpName +
+            " && echo \"" + pages[i]
+            .files[
+              j].fileCode + "\" >> " + tmpName + " ) && ");
+        }
+
+        command += ("(test -e " + pages[i].startupCode +
+          " || touch " + pages[i].startupFileName + "&& echo \"" +
+          pages[i].startupCode + "\" >> " +
+          pages[i].startupFileName + " ) && ");
+        command += " cd .. && cd .. && cd ..";
+
+        console.log(command);
+        Meteor.call(command);
       }
     },
 

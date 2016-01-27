@@ -51,6 +51,29 @@ angular.module('pdaApp')
           "startupCode": pageObject.startupCode,
           "forbiddenWords": pageObject.forbiddenWords,
           "requiredWords": pageObject.requiredWords,
+          "startupFileName": pageObject.startupFileName,
+        }
+      });
+    };
+
+    $scope.addFile = function(pageId, newFile) {
+      Pages.update(pageId, {
+        $push: {
+          "files": {
+            "fileName": newFile.fileName,
+            "fileCode": newFile.fileCode,
+          },
+        }
+      });
+    };
+
+    $scope.removeFile = function(pageId, oldFile) {
+      Pages.update(pageId, {
+        $unset: {
+          "files": {
+            "fileName": oldFile.fileName,
+            "fileCode": oldFile.fileCode
+          }
         }
       });
     };
