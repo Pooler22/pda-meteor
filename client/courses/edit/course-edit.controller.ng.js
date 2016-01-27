@@ -5,31 +5,29 @@ angular.module('pdaApp')
     $state) {
     $scope.subscribe('courses');
     $scope.subscribe('pages');
+    $scope.subscribe('exercises');
 
     $scope.helpers({
       course: () => {
-        var course = Courses.findOne($stateParams.courseId);
-        //var pages = course.pageIds;
-        //course.pages = pages;
-        console.log(course);
-        return course;
+        return Courses.findOne($stateParams.courseId);
       },
       coursePages: () => {
-        var pages = Pages.find({
+        return Pages.find({
           "ownerId": $stateParams.courseId
         });
-        console.log(pages);
-        return pages;
-        //console.log($stateParams);
-        //var tmp1 = Courses.findOne($stateParams.courseId);
-        //var tmp = $scope.course.pageIds;
-        //var tmp2 = [];
-        //for (var i = 0; i < tmp.length; ++i) {
-        //  tmp2.push(Pages.findOne(tmp[i]));
-        //}
-        //return Meteor.call('coursePages', $stateParams.courseId);
+      },
+      correctExercise: () => {
+        return Exercises.find($stateParams.courseId);
       }
     });
+
+    $scope.correctExercise = function() {
+      return Exercises.find();
+    };
+
+    $scope.checkSelectedPage = function() {
+      return $scope.selectedIndex < $scope.coursePages.length;
+    };
 
     $scope.editCourse = function() {
       Courses.update($scope.course._id, {
@@ -41,16 +39,15 @@ angular.module('pdaApp')
       });
     };
 
-    $scope.backToListCourse = function() {
-      $state.go('courses-list');
+    $scope.removeCourse = function() {
+      //todo remove id owner from pages and exercise
+      Courses.remove({
+        _id: $stateParams.courseId
+      });
+      $scope.backToListCourse();
     };
 
-    function pagesLength() {
-      return $scope.course.pages.length;
-    }
-
     $scope.createPage = function() {
-      //$scope.newPage.id = pagesLength() + 1;
       Meteor.call('createPage', $scope.course._id, $scope.newPage);
       $scope.newPage = undefined;
     };
@@ -62,10 +59,6 @@ angular.module('pdaApp')
           "description": pageObject.description,
         }
       });
-      //console.log($scope.course._id);
-      //console.log(pageObject);
-      //console.log($scope.course.pag[pageId]);
-      //Meteor.call('editPage', $scope.course._id, pageObject);
     };
 
     $scope.removePage = function(pageObjectId) {
@@ -75,5 +68,31 @@ angular.module('pdaApp')
       });
     };
 
+    $scope.createExercise = function(pageId, exerciseObject) {
+      exerciseObject.ownerId = pageId;
+      exerciseObject.courseId = $stateParams.courseId;
+      Exercises.insert(exerciseObject);
+      $scope.newExercise = undefined;
+    };
+
+    $scope.editExercise = function(exerciseObject) {
+      Exercises.update(exerciseObject._id, {
+        $set: {
+          "name": exerciseObject.name,
+          "description": exerciseObject.description,
+        }
+      });
+    };
+
+    $scope.removeExercise = function(exerciseObjectId) {
+      //todo remove id owner from exercise
+      Exercises.remove({
+        _id: exerciseObjectId
+      });
+    };
+
+    $scope.backToListCourse = function() {
+      $state.go('courses-list');
+    };
 
   });

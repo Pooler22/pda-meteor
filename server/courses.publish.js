@@ -26,3 +26,17 @@ Meteor.publish('pages', function(options, searchString) {
   });
   return Pages.find(where, options);
 });
+
+
+Meteor.publish('exercises', function(options, searchString) {
+  var where = {
+    'name': {
+      '$regex': '.*' + (searchString || '') + '.*',
+      '$options': 'i'
+    }
+  };
+  Counts.publish(this, 'numberOfPages', Exercises.find(where), {
+    noReady: true
+  });
+  return Exercises.find(where, options);
+});

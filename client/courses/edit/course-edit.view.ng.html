@@ -2,6 +2,7 @@
   <form ng-submit="editCourse()" layout="column">
     <div layout="row">
       <md-button type="submit">Zapisz</md-button>
+      <md-button ng-click="removeCourse()">Usuń kurs</md-button>
       <md-button ng-click="backToListCourse()">Wróć</md-button>
     </div>
     <md-switch ng-model="course.publicAcces">
@@ -17,9 +18,10 @@
       <label>Opis</label>
       <textarea ng-model="course.description"></textarea>
     </md-input-container>
+
   </form>
 
-  <md-tabs md-dynamic-height md-border-bottom md-autoselect>
+  <md-tabs md-dynamic-height md-border-bottom md-autoselect class="md-whiteframe-2dp" md-selected="selectedIndex">
     <md-tab ng-repeat="page in coursePages" label="{{ page.name }}">
       <md-content layout="column">
         <form ng-submit="editPage(page)" layout="column">
@@ -27,13 +29,17 @@
             <label>Nazwa</label>
             <textarea ng-model="page.name"></textarea>
           </md-input-container>
-        <md-input-container>
-          <label>Treść</label>
-          <textarea ng-model="page.description"></textarea>
-        </md-input-container>
-        <input class="md-button" type="submit" value="Zapisz zmiany">
-        <md-button ng-click="removePage(page._id)">Usuń stronę</md-button>
-      </form>
+          <md-input-container>
+            <label>Treść</label>
+            <textarea ng-model="page.description"></textarea>
+          </md-input-container>
+
+          <input class="md-button" type="submit" value="Zapisz zmiany">
+          <md-button ng-click="removePage(page._id)">Usuń stronę</md-button>
+        </form>
+
+
+
       </md-content>
     </md-tab>
 
