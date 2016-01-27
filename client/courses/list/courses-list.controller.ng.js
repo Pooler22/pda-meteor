@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseListCtrl', function($scope, $reactive) {
+  .controller('CourseListCtrl', function($scope, $reactive, $state) {
     $reactive(this).attach($scope);
 
     $scope.page = 1;
@@ -38,11 +38,15 @@ angular.module('pdaApp')
     };
 
     $scope.startCourse = function(course) {
-      location.href = '/courses/details/' + course._id;
+      $state.go('courses-details', {
+        courseId: course
+      });
     };
 
-    $scope.startCourse = function(course) {
-      location.href = '/courses/edit/' + course._id;
+    $scope.editCourse = function(course) {
+      $state.go('courses-edit', {
+        courseId: course
+      });
     };
 
     $scope.removeCourse = function(course) {

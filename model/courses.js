@@ -3,7 +3,12 @@ Courses = new Mongo.Collection('courses');
 Courses.allow({
   insert: function(userId, course) {
     course.name_sort = course.name.toLowerCase();
-    return true;
+    Meteor.call('initCourseFiles', course._id,
+      function(err, response) {
+        console.log(respone);
+        console.log("error: " + err);
+        return true;
+      });
   },
   update: function(userId, course, fields, modifier) {
     return true;

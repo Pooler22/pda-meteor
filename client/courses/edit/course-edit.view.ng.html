@@ -34,12 +34,30 @@
             <textarea ng-model="page.description"></textarea>
           </md-input-container>
 
+          <md-switch ng-model="page.haveExercise">
+            Ćwiczenie praktyczne
+          </md-switch>
+
+          <md-input-container>
+            <label>Kod początkowy</label>
+            <textarea ng-model="page.startupCode"></textarea>
+          </md-input-container>
+
+          <md-content>
+            <label>Zakazane słowa</label>
+            <md-chips ng-model="page.forbiddenWords" readonly="false">
+            </md-chips>
+          </md-content>
+
+          <md-content>
+            <label>Wymagane słowa</label>
+            <md-chips ng-model="page.requiredWords" readonly="false">
+            </md-chips>
+          </md-content>
+
           <input class="md-button" type="submit" value="Zapisz zmiany">
           <md-button ng-click="removePage(page._id)">Usuń stronę</md-button>
         </form>
-
-
-
       </md-content>
     </md-tab>
 

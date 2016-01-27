@@ -4,22 +4,15 @@ Meteor.startup(function() {
   // Load exec
   var exec = Npm.require("child_process").exec;
 
-  function selectSerializer(expression) {
-    switch (expression) {
-      case "javascript":
-        return "java";
-      case 'c++':
-        return "gcc";
-      default:
-        return "none";
-    }
-  }
-
   // Server methods
   Meteor.methods({
-    testCode: function(userCode, language) {
-      var serializerPath = selectSerializer(language);
-      runCode(serializerPath + ' ' + userCode);
+
+
+
+    testCode: function(pageId, userCode, language) {
+      var page = Pages.Collection.findOne({
+        _id: "pageId"
+      });
 
     },
 
@@ -38,6 +31,14 @@ Meteor.startup(function() {
         future.return(stdout.toString());
       });
       return future.wait();
-    }
+    },
+
+    initCourseFiles: function(courseId) {
+      Meteor.call('runCode', "mkdir -p usersCodes/" + courseId,
+        function(err, response) {
+          console.log(respone);
+          console.log("error: " + err);
+        });
+    },
   });
 });

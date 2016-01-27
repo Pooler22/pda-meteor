@@ -12,9 +12,9 @@
           <div class="md-list-item-text" layout="row">
             <h4>{{ course.name }} - {{ course.description }}</h4>
             <span class="md-secondary">
-              <md-button ng-click="startCourse(course)" >Rozpocznij kurs</md-button>
-              <md-button ng-click="editCourse(course)" >Edytuj kurs</md-button>
-              <md-button ng-click="removeCourse(course)" >Usuń kurs</md-button>
+              <md-button ng-click="startCourse(course._id)" >Rozpocznij kurs</md-button>
+              <md-button ng-click="editCourse(course._id)" >Edytuj kurs</md-button>
+              <md-button ng-click="removeCourse(course._id)" >Usuń kurs</md-button>
           </span>
           </div>
         </md-list-item>

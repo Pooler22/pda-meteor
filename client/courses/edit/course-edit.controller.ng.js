@@ -5,7 +5,6 @@ angular.module('pdaApp')
     $state) {
     $scope.subscribe('courses');
     $scope.subscribe('pages');
-    $scope.subscribe('exercises');
 
     $scope.helpers({
       course: () => {
@@ -15,19 +14,8 @@ angular.module('pdaApp')
         return Pages.find({
           "ownerId": $stateParams.courseId
         });
-      },
-      correctExercise: () => {
-        return Exercises.find($stateParams.courseId);
       }
     });
-
-    $scope.correctExercise = function() {
-      return Exercises.find();
-    };
-
-    $scope.checkSelectedPage = function() {
-      return $scope.selectedIndex < $scope.coursePages.length;
-    };
 
     $scope.editCourse = function() {
       Courses.update($scope.course._id, {
@@ -48,6 +36,8 @@ angular.module('pdaApp')
     };
 
     $scope.createPage = function() {
+      $scope.newPage.forbiddenWords = ["import"];
+      $scope.newPage.requiredWords = ["class"];
       Meteor.call('createPage', $scope.course._id, $scope.newPage);
       $scope.newPage = undefined;
     };
@@ -57,6 +47,10 @@ angular.module('pdaApp')
         $set: {
           "name": pageObject.name,
           "description": pageObject.description,
+          "haveExercise": pageObject.haveExercise,
+          "startupCode": pageObject.startupCode,
+          "forbiddenWords": pageObject.forbiddenWords,
+          "requiredWords": pageObject.requiredWords,
         }
       });
     };
@@ -65,29 +59,6 @@ angular.module('pdaApp')
       //todo remove id owner from exercise
       Pages.remove({
         _id: pageObjectId
-      });
-    };
-
-    $scope.createExercise = function(pageId, exerciseObject) {
-      exerciseObject.ownerId = pageId;
-      exerciseObject.courseId = $stateParams.courseId;
-      Exercises.insert(exerciseObject);
-      $scope.newExercise = undefined;
-    };
-
-    $scope.editExercise = function(exerciseObject) {
-      Exercises.update(exerciseObject._id, {
-        $set: {
-          "name": exerciseObject.name,
-          "description": exerciseObject.description,
-        }
-      });
-    };
-
-    $scope.removeExercise = function(exerciseObjectId) {
-      //todo remove id owner from exercise
-      Exercises.remove({
-        _id: exerciseObjectId
       });
     };
 

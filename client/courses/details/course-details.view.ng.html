@@ -10,26 +10,24 @@
   <md-content layout-padding class="md-whiteframe-3dp">
 
     <md-tabs md-dynamic-height md-border-bottom md-autoselect>
-      <md-tab ng-repeat="page in course.pages" label="{{ page.title }}">
+      <md-tab ng-repeat="page in header" label="{{ page.name }}">
         <md-content class="md-padding" layout="column">
           <p>{{ page.description }}</p>
-          <div ng-if="page.exercise !== undefined" layout="column" layout-padding>
-
-            <exec></exec>
+          <div ng-if="page.haveExercise === true" layout="column" layout-padding>
 
             <md-input-container>
               <label>Twój kod</label>
-              <textarea></textarea>
+              <textarea ng-model="userCode"></textarea>
             </md-input-container>
 
-            <md-content>
-              Wynik testów
-            </md-content>
+            <md-button class="md-raised" ng-click="runCode(page._id)">
+              Uruchom kod
+            </md-button>
 
-            <div>
-              <md-button class="md-raised md-warn">Uruchom</md-button>
-            </div>
-
+            <md-input-container>
+              <label>Wyniki</label>
+              <textarea ng-model="resoult"></textarea>
+            </md-input-container>
           </div>
         </md-content>
       </md-tab>
