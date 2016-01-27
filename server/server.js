@@ -7,7 +7,15 @@ Meteor.startup(function() {
   // Server methods
   Meteor.methods({
 
-
+    prepareStructure: function(courseId, UserId) {
+      var pagesIds = Pages.find({
+        "ownerId": courseId
+      }).fetch();
+      for (var i = 0; i < pagesIds.length; i++) {
+        Meteor.call('runCode', "mkdir -p usersCodes/" + courseId +
+          "/" + pagesIds[i]._id + "/" + UserId);
+      }
+    },
 
     testCode: function(pageId, userCode, language) {
       var page = Pages.Collection.findOne({

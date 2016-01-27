@@ -2,9 +2,6 @@
   <md-toolbar layout="row">
     <p>Kurs: {{ course.name }}</p>
     <span flex></span>
-    <md-button class="md-raised">
-      Następna strona
-    </md-button>
   </md-toolbar>
 
   <md-content layout-padding class="md-whiteframe-3dp">
@@ -17,16 +14,16 @@
 
             <md-input-container>
               <label>Twój kod</label>
-              <textarea ng-model="userCode"></textarea>
+              <textarea ng-model="page.startupCode"></textarea>
             </md-input-container>
 
-            <md-button class="md-raised" ng-click="runCode(page._id)">
+            <md-button class="md-raised" ng-click="runCode(page)">
               Uruchom kod
             </md-button>
 
             <md-input-container>
               <label>Wyniki</label>
-              <textarea ng-model="resoult"></textarea>
+              <textarea ng-model="page.result"></textarea>
             </md-input-container>
           </div>
         </md-content>
