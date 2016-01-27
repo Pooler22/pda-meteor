@@ -1,25 +1,14 @@
 Pages = new Mongo.Collection('pages');
 
 Pages.allow({
-  insert: function(userId, thing) {
-    thing.name_sort = thing.name.toLowerCase();
+  insert: function(userId, page) {
+    page.name_sort = page.name.toLowerCase();
     return true;
   },
-  update: function(userId, thing, fields, modifier) {
-    thing.name_sort = thing.name.toLowerCase();
+  update: function(userId, page, fields, modifier) {
     return true;
   },
-  remove: function(userId, thing) {
+  remove: function(userId, page) {
     return true;
-  }
-});
-
-Meteor.methods({
-  page: function(pageAttributes) {
-    var user = Meteor.user(),
-      pageWithSameLink = Pages.findOne({
-        _id: pageAttributes._id
-      });
-    return pageId;
   }
 });

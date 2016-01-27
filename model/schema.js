@@ -1,30 +1,7 @@
-ExercisesSchema = new SimpleSchema({
-  "name": {
-    type: String,
-    max: 20,
-  },
-  "description": {
-    type: String,
-  }
-});
-Exercises.attachSchema(ExercisesSchema);
-
-PagesSchema = new SimpleSchema({
-  "name": {
-    type: String,
-    max: 20,
-  },
-  "description": {
-    type: String,
-  },
-  "exercises": {
-    type: String,
-    optional: true
-  }
-});
-Pages.attachSchema(PagesSchema);
-
 CoursesSchema = new SimpleSchema({
+  "_id": {
+    type: Meteor.ObjectID
+  },
   "name": {
     type: String,
     max: 20,
@@ -32,12 +9,62 @@ CoursesSchema = new SimpleSchema({
   "description": {
     type: String,
   },
-  "isPublic": {
+  "publicAcces": {
     type: Boolean,
   },
-  "pages": {
-    type: [String],
+  "pageIds": {
+    type: [Meteor.ObjectID],
     optional: true
   }
+
 });
-Courses.attachSchema(CoursesSchema);
+
+//Courses.attachSchema(CoursesSchema);
+
+
+PagesSchema = new SimpleSchema({
+  "_id": {
+    type: Meteor.ObjectID
+  },
+  "name": {
+    type: String,
+    max: 20,
+  },
+  "description": {
+    type: String,
+  }
+});
+
+//Pages.attachSchema(PagesSchema);
+
+//
+// "pages": {
+//   type: [{
+//     "name": {
+//       type: String,
+//       max: 20,
+//       optional: true
+//     },
+//     "description": {
+//       type: String,
+//       optional: true
+//     },
+//     "exercises": {
+//       type: [{
+//         "name": {
+//           type: String,
+//           max: 20,
+//         },
+//         "language": {
+//           type: String,
+//           max: 20,
+//         },
+//         "description": {
+//           type: String,
+//         }
+//       }],
+//       optional: true
+//     }
+//   }],
+//   optional: true
+// }

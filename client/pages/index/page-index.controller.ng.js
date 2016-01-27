@@ -13,9 +13,9 @@ angular.module('pdaApp')
 
     $scope.helpers({
       pages: () => {
-        return Pages.find({}, {
-          sort: $scope.getReactively('sort')
-        });
+        // return Pages.find({}, {
+        //   sort: $scope.getReactively('sort')
+        // });
       },
       pagesCount: () => {
         return Counts.get('numberOfPages');
@@ -46,9 +46,9 @@ angular.module('pdaApp')
     };
 
     $scope.removePage = function(page) {
-      Pages.remove({
-        _id: page._id
-      });
+      // Pages.remove({
+      //   _id: page._id
+      // });
     };
 
     return $scope.$watch('orderProperty', function() {

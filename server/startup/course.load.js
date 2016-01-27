@@ -5,7 +5,8 @@ Meteor.startup(function() {
       'description': 'ang. Fasade',
       'pages': [{
         'title': 'Wstęp',
-        'description': 'Fasada – wzorzec projektowy należący do grupy wzorców strukturalnych. Służy do ujednolicenia dostępu do złożonego systemu poprzez wystawienie uproszczonego, uporządkowanego interfejsu programistycznego, który ułatwia jego użycie.'
+        'description': 'Fasada – wzorzec projektowy należący do grupy wzorców strukturalnych. Służy do ujednolicenia dostępu do złożonego systemu poprzez wystawienie uproszczonego, uporządkowanego interfejsu programistycznego, który ułatwia jego użycie.',
+        'publicAcces': true,
       }, {
         'title': 'Diagram',
         'description': 'opis1',
@@ -84,6 +85,7 @@ Meteor.startup(function() {
     }, {
       'name': 'Adapter',
       'description': 'ang. Wrapper',
+      'publicAcces': true,
       'pages': [{
         'title': 'Wstęp',
         'description': 'opis',
