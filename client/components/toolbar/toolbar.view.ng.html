@@ -1,20 +1,20 @@
 <md-toolbar layout="row" layout-align="start center" class="toolbar md-whiteframe-8dp">
   <navbar-left>
-    <md-button ng-href="/">Akademia wzorców projektowych</md-button>
-    <md-button ng-href="/courses" ng-show="toolbar.isLoggedIn">Kursy</md-button>
-    <md-button ng-href="/courses/add" ng-show="toolbar.isLoggedIn">Dodaj kurs</md-button>
+    <md-button ng-href="/" >Akademia wzorców projektowych</md-button>
+    <md-button ng-href="/courses" ng-show="toolbar.isLoggedIn" >Kursy</md-button>
+    <md-button ng-href="/courses/add" ng-show="toolbar.isLoggedIn" >Dodaj kurs</md-button>
   </navbar-left>
 
   <span class="flex"></span>
 
   <navbar-right>
     <div ng-hide="toolbar.isLoggedIn">
-      <md-button ng-href="/login">Logowanie</md-button>
-      <md-button ng-href="/register">Rejestracja</md-button>
+      <md-button ng-href="/login" >Logowanie</md-button>
+      <md-button ng-href="/register" >Rejestracja</md-button>
     </div>
     <div ng-show="toolbar.isLoggedIn">
-      <md-button>{{ toolbar.currentUser.emails[0].address }}</md-button>
-      <md-button ng-click="toolbar.logout()">Wyloguj się</md-button>
+      <md-button >{{ toolbar.currentUser.emails[0].address }}</md-button>
+      <md-button ng-click="toolbar.logout()" >Wyloguj się</md-button>
     </div>
   </navbar-right>
 </md-toolbar>

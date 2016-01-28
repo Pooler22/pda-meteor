@@ -3,12 +3,7 @@ Courses = new Mongo.Collection('courses');
 Courses.allow({
   insert: function(userId, course) {
     course.name_sort = course.name.toLowerCase();
-    Meteor.call('initCourseFiles', course._id,
-      function(err, response) {
-        console.log(respone);
-        console.log("error: " + err);
-        return true;
-      });
+    Meteor.call('initCourseFiles', course._id);
   },
   update: function(userId, course, fields, modifier) {
     return true;
@@ -24,7 +19,6 @@ Meteor.methods({
       courseWithSameLink = Courses.findOne({
         _id: courseAttributes._id
       });
-    console.log("działa metoda kursu!");
     return courseId;
   },
 

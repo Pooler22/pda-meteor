@@ -3,7 +3,6 @@ Meteor.startup(function() {
   Meteor.methods({
     checkCode: function(courseId, pageId, UserId, codeToTest) {
       var fs = Npm.require('fs');
-
       var filePath = process.env.PWD + "/usersCodes/" +
         courseId + "/" + pageId +
         "/" + UserId + "/";
@@ -18,8 +17,6 @@ Meteor.startup(function() {
 
     prepareStructure: function(courseId, UserId) {
       var fs = Npm.require('fs');
-
-      console.log(UserId);
       var pages = Pages.find({
         "ownerId": courseId
       }).fetch();
@@ -40,11 +37,6 @@ Meteor.startup(function() {
             pages[i].files[j].fileCode,
             'utf8');
         }
-
-        // fs.writeFileSync(filePath + pages[i].startupFileName,
-        //   pages[i].startupCode,
-        //   'utf8');
-
         console.log(command);
         Meteor.call(command);
       }
@@ -71,6 +63,6 @@ Meteor.startup(function() {
       });
       return future.wait();
     },
-    
+
   });
 });
