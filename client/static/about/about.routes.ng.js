@@ -5,7 +5,7 @@ angular.module('pdaApp')
     $stateProvider
       .state('about', {
         url: '/about',
-        templateUrl: 'client/about/about.view.ng.html',
+        templateUrl: 'client/static/about/about.view.ng.html',
         controller: 'AboutCtrl'
       });
   });

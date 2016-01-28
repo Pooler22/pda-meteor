@@ -1,13 +1,33 @@
-  <div layout="column" layout-padding>
+<div layout="column" layout-padding>
+  <md-toolbar layout="row">
     <p>Kurs: {{ course.name }}</p>
-      <md-content layout-padding class="md-whiteframe-3dp">
+    <span flex></span>
+  </md-toolbar>
 
-        <md-tabs md-dynamic-height md-border-bottom md-autoselect>
-          <md-tab ng-repeat="page in course.pages" label="{{ page.title }}">
-            <md-content class="md-padding">
-              <p>{{ page.description }}</p>
-            </md-content>
-            </md-tab>
-          </md-tabs>
-      </md-content>
-  </div>
+  <md-content layout-padding class="md-whiteframe-3dp">
+
+    <md-tabs md-dynamic-height md-border-bottom md-autoselect>
+      <md-tab ng-repeat="page in header" label="{{ page.name }}">
+        <md-content class="md-padding" layout="column">
+          <p>{{ page.description }}</p>
+          <div ng-if="page.haveExercise === true" layout="column" layout-padding>
+
+            <md-input-container>
+              <label>Twój kod</label>
+              <textarea ng-model="page.startupCode"></textarea>
+            </md-input-container>
+
+            <md-button class="md-raised" ng-click="runCode(page)">
+              Uruchom kod
+            </md-button>
+
+            <md-input-container>
+              <label>Wyniki</label>
+              <textarea ng-model="page.result"></textarea>
+            </md-input-container>
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

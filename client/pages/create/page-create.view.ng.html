@@ -1,0 +1,15 @@
+    <form class="md-whiteframe-z1" ng-submit="save()" name="form" novalidate layout="column">
+      <p>Dodaj stronę</p>
+
+      <md-input-container>
+        <label>Nazwa</label>
+        <input ng-model="newPage.name" placeholder="Nazwa">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Opis</label>
+        <input ng-model="newPage.description" placeholder="Opis">
+      </md-input-container>
+
+      <input class="md-button" type="submit" value="Dodaj stronę">
+    </form>

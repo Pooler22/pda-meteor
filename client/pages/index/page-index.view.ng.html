@@ -7,14 +7,14 @@
     </md-toolbar>
     <md-content>
       <md-list>
-        <md-subheader class="md-no-sticky">Wybierz kurs aby go rozpocząć.</md-subheader>
-        <md-list-item dir-paginate="course in courses | itemsPerPage: perPage" total-items="coursesCount" current-page='page' ng-click="startCourse(course)" class="secondary-button-padding">
+        <md-subheader class="md-no-sticky">Wybierz stronę.</md-subheader>
+        <md-list-item dir-paginate="page in pages | itemsPerPage: perPage" total-items="pagesCount" current-page='site' ng-click="startPage(page)" class="secondary-button-padding">
           <div class="md-list-item-text" layout="row">
-            <h4>{{ course.name }} - {{ course.description }}</h4>
+            <h4>{{ page.name }} - {{ page.description }}</h4>
             <span class="md-secondary">
-              <md-button ng-click="startCourse(course._id)" >Rozpocznij kurs</md-button>
-              <md-button ng-click="editCourse(course._id)" >Edytuj kurs</md-button>
-              <md-button ng-click="removeCourse(course._id)" >Usuń kurs</md-button>
+              <md-button ng-click="startPage(page)">Zobacz</md-button>
+              <md-button ng-click="editPage(page)">Edytuj</md-button>
+              <md-button ng-click="removePage(page)">Usuń</md-button>
           </span>
           </div>
         </md-list-item>
@@ -27,15 +27,15 @@
   <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
     <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
       <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
-        <h3 class="md-display-1">Wyszukiwanie kursów</h3>
+        <h3 class="md-display-1">Wyszukiwanie stron</h3>
       </div>
     </md-toolbar>
     <md-content layout-margin>
-      <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+      <dir-pagination-controls on-page-change="siteChanged(newPageNumber)"></dir-pagination-controls>
 
       <div layout="column">
         <md-input-container>
-          <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">
+          <input type="Search" ng-model="search" placeholder="Wyszukaj stronę">
         </md-input-container>
 
           <p>Sotruj:</p>

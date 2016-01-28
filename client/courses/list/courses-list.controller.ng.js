@@ -1,26 +1,28 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseListCtrl', function($scope) {
-    $scope.page = 1
-    $scope.perPage = 10
+  .controller('CourseListCtrl', function($scope, $reactive, $state) {
+    $reactive(this).attach($scope);
+
+    $scope.page = 1;
+    $scope.perPage = 10;
     $scope.sort = {
       name_sort: 1
     };
-    $scope.orderProperty = '1'
+    $scope.orderProperty = '1';
 
     $scope.helpers({
-      courses: function() {
+      courses: () => {
         return Courses.find({}, {
           sort: $scope.getReactively('sort')
         });
       },
-      coursesCount: function() {
+      coursesCount: () => {
         return Counts.get('numberOfCourses');
       }
     });
 
-    $scope.subscribe('courses', function() {
+    $scope.subscribe('courses', () => {
       return [{
         sort: $scope.getReactively('sort'),
         limit: parseInt($scope.getReactively('perPage')),
@@ -29,18 +31,28 @@ angular.module('pdaApp')
       }, $scope.getReactively('search')];
     });
 
-    $scope.remove = function(course) {
-      Courses.remove({
-        _id: course._id
-      });
-    };
+
 
     $scope.pageChanged = function(newPage) {
       $scope.page = newPage;
     };
 
     $scope.startCourse = function(course) {
-      location.href = '/courses/details/' + course._id;
+      $state.go('courses-details', {
+        courseId: course
+      });
+    };
+
+    $scope.editCourse = function(course) {
+      $state.go('courses-edit', {
+        courseId: course
+      });
+    };
+
+    $scope.removeCourse = function(course) {
+      Courses.remove({
+        _id: course._id
+      });
     };
 
     return $scope.$watch('orderProperty', function() {

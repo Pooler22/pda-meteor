@@ -1,0 +1,119 @@
+<md-content layout-padding class="md-whiteframe-3dp" layout="column">
+  <form ng-submit="editCourse()" layout="column">
+    <div layout="row">
+      <md-button type="submit">Zapisz</md-button>
+      <md-button ng-click="removeCourse()">Usuń kurs</md-button>
+      <md-button ng-click="backToListCourse()">Wróć</md-button>
+    </div>
+    <md-switch ng-model="course.publicAcces">
+      Dostęp publiczny
+    </md-switch>
+    <span flex></span>
+    <md-input-container>
+      <label>Nazwa</label>
+      <input ng-model="course.name">
+    </md-input-container>
+    <span flex></span>
+    <md-input-container>
+      <label>Opis</label>
+      <textarea ng-model="course.description"></textarea>
+    </md-input-container>
+
+  </form>
+
+  <md-tabs md-dynamic-height md-border-bottom md-autoselect class="md-whiteframe-2dp" md-selected="selectedIndex">
+    <md-tab ng-repeat="page in coursePages" label="{{ page.name }}">
+      <md-content layout="column">
+        <form ng-submit="editPage(page)" layout="column">
+          <md-input-container>
+            <label>Nazwa</label>
+            <textarea ng-model="page.name"></textarea>
+          </md-input-container>
+          <md-input-container>
+            <label>Treść</label>
+            <textarea ng-model="page.description"></textarea>
+          </md-input-container>
+
+          <md-switch ng-model="page.haveExercise">
+            Ćwiczenie praktyczne
+          </md-switch>
+
+          <md-input-container>
+            <label>Nazwa pliku użytkownika</label>
+            <textarea ng-model="page.startupFileName"></textarea>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Kod początkowy</label>
+            <textarea ng-model="page.startupCode"></textarea>
+          </md-input-container>
+
+          <md-list flex>
+            <md-subheader>Pliki dodatkowe</md-subheader>
+            <md-list-item ng-repeat="item in page.files" class="md-whiteframe-4dp">
+              <md-content layout="column" flex>
+              <md-input-container>
+                <label>Nazwa pliku</label>
+                <textarea ng-model="item.fileName"></textarea>
+              </md-input-container>
+              <md-input-container>
+                <label>Treść pliku</label>
+                <textarea ng-model="item.fileCode"></textarea>
+              </md-input-container>
+              <md-button ng-click="removeFile(page._id, item.fileName)">Usuń plik</md-button>
+            </md-content>
+             </md-list-item>
+          </md-list>
+
+          <md-content ng-model="newFile" layout="column" class="md-whiteframe-4dp" layout-padding>
+            <md-subheader>Dodaj plik dodatkowy:</md-subheader>
+            <md-input-container>
+              <label>Nazwa pliku</label>
+              <textarea ng-model="newFile.fileName"></textarea>
+            </md-input-container>
+            <md-input-container>
+              <label>Kod pliku</label>
+              <textarea ng-model="newFile.fileCode"></textarea>
+            </md-input-container>
+            <md-button ng-click="addFile(page._id, newFile)">Dodaj plik</md-button>
+          </md-content>
+
+
+          <md-content>
+            <label>Zakazane słowa</label>
+            <md-chips ng-model="page.forbiddenWords" readonly="false">
+            </md-chips>
+          </md-content>
+
+          <md-content>
+            <label>Wymagane słowa</label>
+            <md-chips ng-model="page.requiredWords" readonly="false">
+            </md-chips>
+          </md-content>
+
+          <input class="md-button" type="submit" value="Zapisz zmiany">
+          <md-button ng-click="removePage(page._id)">Usuń stronę</md-button>
+        </form>
+      </md-content>
+    </md-tab>
+
+    <md-tab label="Dodaj stronę">
+      <md-content layout="column">
+        <form ng-submit="createPage()" name="form" novalidate layout="column">
+          <md-input-container>
+            <label>Nazwa</label>
+            <input ng-model="newPage.name" placeholder="Nazwa">
+          </md-input-container>
+
+          <md-input-container>
+            <label>Treść</label>
+            <textarea ng-model="newPage.description" placeholder="Opis"></textarea>
+          </md-input-container>
+
+          <input class="md-button" type="submit" value="Dodaj stronę">
+        </form>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+
+</md-content>
