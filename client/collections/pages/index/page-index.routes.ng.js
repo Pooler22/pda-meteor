@@ -5,7 +5,7 @@ angular.module('pdaApp')
     $stateProvider
       .state('pages-index', {
         url: '/pages',
-        templateUrl: 'client/pages/index/page-index.view.ng.html',
+        templateUrl: 'client/collections/pages/index/page-index.view.ng.html',
         controller: 'PageIndexCtrl'
       });
   });

@@ -5,7 +5,7 @@ angular.module('pdaApp')
     $stateProvider
       .state('courses-details', {
         url: '/courses/details/:courseId',
-        templateUrl: 'client/courses/details/course-details.view.ng.html',
+        templateUrl: 'client/collections/courses/details/course-details.view.ng.html',
         controller: 'CourseDetailsCtrl'
       });
   });

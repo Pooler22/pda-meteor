@@ -1,4 +1,3 @@
-
 <md-toolbar layout="row" layout-align="start center" class="toolbar md-whiteframe-8dp">
   <navbar-left>
     <md-button ng-href="/">Akademia wzorców projektowych</md-button>
@@ -9,9 +8,13 @@
   <span class="flex"></span>
 
   <navbar-right>
-    <md-button ng-href="/login" ng-hide="toolbar.isLoggedIn">Logowanie</md-button>
-    <md-button ng-href="/register" ng-hide="toolbar.isLoggedIn">Rejestracja</md-button>
-    <md-button ng-show="toolbar.isLoggedIn">{{ toolbar.currentUser.emails[0].address }}</md-button>
-    <md-button ng-click="toolbar.logout()" ng-show="toolbar.isLoggedIn">Wyloguj się</md-button>
+    <div ng-hide="toolbar.isLoggedIn">
+      <md-button ng-href="/login">Logowanie</md-button>
+      <md-button ng-href="/register">Rejestracja</md-button>
+    </div>
+    <div ng-show="toolbar.isLoggedIn">
+      <md-button>{{ toolbar.currentUser.emails[0].address }}</md-button>
+      <md-button ng-click="toolbar.logout()">Wyloguj się</md-button>
+    </div>
   </navbar-right>
 </md-toolbar>

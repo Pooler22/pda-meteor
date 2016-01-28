@@ -16,8 +16,6 @@ angular.module('pdaApp')
           function(
             err,
             response) {
-            //$scope.exec.resoult = response;
-            //console.log($scope.exec.startupCode);
             console.log(response);
             console.log("Error: " + err);
           });
@@ -60,36 +58,16 @@ angular.module('pdaApp')
       if (page.result === "") {
         console.log("Poprawny kod, czas przesłać go na serwer.");
 
-
         Meteor.call('checkCode', $stateParams.courseId, page._id, Meteor.userId(),
           page.startupCode,
           function(
             err,
             response) {
-            //$scope.exec.resoult = response;
-            //console.log($scope.exec.startupCode);
             console.log(response);
             console.log("Error: " + err);
           });
-
-
-
       } else {
         console.log("Coś poszło nie tak");
-
       }
-
-      //
-      // Meteor.call('testCode', page._id, $scope.startupCode, function(
-      //   err,
-      //   response) {
-      //   $scope.exec.resoult = response;
-      //   console.log($scope.exec.startupCode);
-      //   console.log(response);
-      // });
-
-
-
     };
-
   });

@@ -5,7 +5,7 @@ angular.module('pdaApp')
     $stateProvider
       .state('pages-create', {
         url: '/pages/create',
-        templateUrl: 'client/pages/create/page-create.view.ng.html',
+        templateUrl: 'client/collections/pages/create/page-create.view.ng.html',
         controller: 'PageCreateCtrl'
       });
   });
