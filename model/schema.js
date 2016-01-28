@@ -69,5 +69,4 @@ PagesSchema = new SimpleSchema({
     optional: true
   }
 });
-
 //Pages.attachSchema(PagesSchema);

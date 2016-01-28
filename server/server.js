@@ -1,9 +1,4 @@
 Meteor.startup(function() {
-  // Load future from fibers
-  var Future = Npm.require("fibers/future");
-  // Load exec
-  var exec = Npm.require("child_process").exec;
-
   // Server methods
   Meteor.methods({
     checkCode: function(courseId, pageId, UserId, codeToTest) {
@@ -41,44 +36,26 @@ Meteor.startup(function() {
 
         for (var j = 0; j < pages[i].files.length; j++) {
           tmpName = pages[i].files[j].fileName;
-          //fs.openSync(filePath + tmpName, 'wx');
           fs.writeFileSync(filePath + tmpName,
             pages[i].files[j].fileCode,
             'utf8');
-          //fs.closeSync(fs.openSync(filePath + pages[i].files[j].fileName,'wx'));
-
-          // command += ("(test -e " + tmpName + " || touch" + tmpName +
-          //   " && echo \"" + pages[i]
-          //   .files[
-          //     j].fileCode + "\" >> " + tmpName + " ) && ");
         }
-
-        //fs.openSync(filePath + pages[i].startupFileName, 'wx');
 
         // fs.writeFileSync(filePath + pages[i].startupFileName,
         //   pages[i].startupCode,
         //   'utf8');
-
-        //fs.closeSync(fs.openSync(filePath + pages[i].files[j].fileName,'wx'));
-
-        // command += ("(test -e " + pages[i].startupCode +
-        //   " || touch " + pages[i].startupFileName + " echo \"" +
-        //   pages[i].startupCode + "\" >> " +
-        //   pages[i].startupFileName + " ) && ");
 
         console.log(command);
         Meteor.call(command);
       }
     },
 
-    testCode: function(pageId, userCode, language) {
-      var page = Pages.Collection.findOne({
-        _id: "pageId"
-      });
-
-    },
-
     runCode: function(userCode) {
+      // Load future from fibers
+      var Future = Npm.require("fibers/future");
+      // Load exec
+      var exec = Npm.require("child_process").exec;
+
       // This method call won't return immediately, it will wait for the
       // asynchronous code to finish, so we call unblock to allow this client
       // to queue other method calls (see Meteor docs)
@@ -94,13 +71,6 @@ Meteor.startup(function() {
       });
       return future.wait();
     },
-
-    initCourseFiles: function(courseId) {
-      Meteor.call('runCode', "mkdir -p usersCodes/" + courseId,
-        function(err, response) {
-          console.log(respone);
-          console.log("error: " + err);
-        });
-    },
+    
   });
 });
