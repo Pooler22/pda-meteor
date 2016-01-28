@@ -6,8 +6,6 @@ Meteor.startup(function() {
 
   // Server methods
   Meteor.methods({
-
-
     checkCode: function(courseId, pageId, UserId, codeToTest) {
       var fs = Npm.require('fs');
 
@@ -19,16 +17,11 @@ Meteor.startup(function() {
         codeToTest,
         'utf8');
 
-
-      Meteor.call('runCode', "javac " + filePath + "*.java",
-        function(err, response) {
-          console.log(respone);
-          console.log("error: " + err);
-        });
+      Meteor.call('runCode', "javac " + filePath + "*.java -d . ");
+      Meteor.call('runCode', "java Fasade.TestFasade");
     },
 
     prepareStructure: function(courseId, UserId) {
-
       var fs = Npm.require('fs');
 
       console.log(UserId);

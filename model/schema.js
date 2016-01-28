@@ -18,9 +18,7 @@ CoursesSchema = new SimpleSchema({
     optional: true
   },
 });
-
 Courses.attachSchema(CoursesSchema);
-
 
 PagesSchema = new SimpleSchema({
   "_id": {
@@ -73,34 +71,3 @@ PagesSchema = new SimpleSchema({
 });
 
 //Pages.attachSchema(PagesSchema);
-
-ExercisesSchema = new SimpleSchema({
-  "_id": {
-    type: Meteor.ObjectID
-  },
-  "name": {
-    type: String,
-  },
-  "language": {
-    type: String,
-    optional: true
-  },
-  "description": {
-    type: String,
-  },
-  "startupCode": {
-    type: String,
-    optional: true
-  },
-  "ownerId": {
-    type: Meteor.ObjectID,
-    optional: true
-  },
-  "courseId": {
-    type: Meteor.ObjectID,
-    optional: true
-  }
-
-});
-
-//Exercises.attachSchema(ExercisesSchema);
