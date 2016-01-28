@@ -7,32 +7,71 @@ Meteor.startup(function() {
   // Server methods
   Meteor.methods({
 
+
+    checkCode: function(courseId, pageId, UserId, codeToTest) {
+      var fs = Npm.require('fs');
+
+      var filePath = process.env.PWD + "/usersCodes/" +
+        courseId + "/" + pageId +
+        "/" + UserId + "/";
+
+      fs.writeFileSync(filePath + Pages.findOne(pageId).startupFileName,
+        codeToTest,
+        'utf8');
+
+
+      Meteor.call('runCode', "javac " + filePath + "*.java",
+        function(err, response) {
+          console.log(respone);
+          console.log("error: " + err);
+        });
+    },
+
     prepareStructure: function(courseId, UserId) {
+
+      var fs = Npm.require('fs');
+
       console.log(UserId);
       var pages = Pages.find({
         "ownerId": courseId
       }).fetch();
       for (var i = 0; i < pages.length; i++) {
-        Meteor.call('runCode', "mkdir -p usersCodes/" + courseId +
+        Meteor.call('runCode', "mkdir -p " + process.env.PWD +
+          "/usersCodes/" + courseId +
           "/" + pages[i]._id + "/" + UserId + "/");
 
-        var command = "cd usersCodes/" + courseId + "/" + pages[i]._id +
-          "/" + UserId + " && ";
+        var command;
+        var filePath = process.env.PWD + "/usersCodes/" +
+          courseId + "/" + pages[i]._id +
+          "/" + UserId + "/";
         var tmpName;
 
         for (var j = 0; j < pages[i].files.length; j++) {
           tmpName = pages[i].files[j].fileName;
-          command += ("(test -e " + tmpName + " || touch" + tmpName +
-            " && echo \"" + pages[i]
-            .files[
-              j].fileCode + "\" >> " + tmpName + " ) && ");
+          //fs.openSync(filePath + tmpName, 'wx');
+          fs.writeFileSync(filePath + tmpName,
+            pages[i].files[j].fileCode,
+            'utf8');
+          //fs.closeSync(fs.openSync(filePath + pages[i].files[j].fileName,'wx'));
+
+          // command += ("(test -e " + tmpName + " || touch" + tmpName +
+          //   " && echo \"" + pages[i]
+          //   .files[
+          //     j].fileCode + "\" >> " + tmpName + " ) && ");
         }
 
-        command += ("(test -e " + pages[i].startupCode +
-          " || touch " + pages[i].startupFileName + "&& echo \"" +
-          pages[i].startupCode + "\" >> " +
-          pages[i].startupFileName + " ) && ");
-        command += " cd .. && cd .. && cd ..";
+        //fs.openSync(filePath + pages[i].startupFileName, 'wx');
+
+        // fs.writeFileSync(filePath + pages[i].startupFileName,
+        //   pages[i].startupCode,
+        //   'utf8');
+
+        //fs.closeSync(fs.openSync(filePath + pages[i].files[j].fileName,'wx'));
+
+        // command += ("(test -e " + pages[i].startupCode +
+        //   " || touch " + pages[i].startupFileName + " echo \"" +
+        //   pages[i].startupCode + "\" >> " +
+        //   pages[i].startupFileName + " ) && ");
 
         console.log(command);
         Meteor.call(command);
