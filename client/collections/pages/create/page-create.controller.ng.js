@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('PageCreateCtrl', function($scope) {
+  .controller('PageCreateController', function($scope) {
     $scope.subscribe('pages');
 
     $scope.save = function() {

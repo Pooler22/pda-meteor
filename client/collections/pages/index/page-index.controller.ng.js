@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('PageIndexCtrl', function($scope, $reactive) {
+  .controller('PageIndexController', function($scope, $reactive) {
     $reactive(this).attach($scope);
 
     $scope.site = 1;

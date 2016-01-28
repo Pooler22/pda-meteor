@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseDetailsCtrl', function($scope, $stateParams) {
+  .controller('CourseDetailsController', function($scope, $stateParams) {
     $scope.subscribe('courses');
     $scope.subscribe('pages');
     $scope.subscribe('userProgress');

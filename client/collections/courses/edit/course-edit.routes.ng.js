@@ -6,6 +6,6 @@ angular.module('pdaApp')
       .state('courses-edit', {
         url: '/courses/edit/:courseId',
         templateUrl: 'client/collections/courses/edit/course-edit.view.ng.html',
-        controller: 'CourseEditCtrl'
+        controller: 'CourseEditController'
       });
   });

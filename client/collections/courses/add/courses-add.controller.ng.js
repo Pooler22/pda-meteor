@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseAddCtrl', function($scope, $state) {
+  .controller('CourseAddController', function($scope, $state) {
     $scope.save = function() {
       if ($scope.form.$valid) {
         $scope.newCourse.pages = [];

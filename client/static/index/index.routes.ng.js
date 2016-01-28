@@ -6,7 +6,7 @@ angular.module('pdaApp')
       .state('index', {
         url: '/',
         templateUrl: 'client/static/index/index.view.ng.html',
-        controller: 'IndexCtrl'
+        controller: 'IndexController'
       }).state('login', {
         url: '/login',
         template: '<login></login>'

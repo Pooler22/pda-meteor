@@ -13,7 +13,7 @@ angular.module('pdaApp')
         case 'AUTH_REQUIRED':
         case 'FORBIDDEN':
         case 'UNAUTHORIZED':
-          $state.go('main');
+          $state.go('index');
           break;
       }
     });

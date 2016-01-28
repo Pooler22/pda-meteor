@@ -1,4 +1,4 @@
 'use strict';
 
 angular.module('pdaApp')
-  .controller('IndexCtrl', function($scope) {});
+  .controller('IndexController', function($scope) {});

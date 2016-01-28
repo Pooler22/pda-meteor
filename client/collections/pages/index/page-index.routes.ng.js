@@ -6,6 +6,6 @@ angular.module('pdaApp')
       .state('pages-index', {
         url: '/pages',
         templateUrl: 'client/collections/pages/index/page-index.view.ng.html',
-        controller: 'PageIndexCtrl'
+        controller: 'PageIndexController'
       });
   });

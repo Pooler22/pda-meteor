@@ -6,6 +6,6 @@ angular.module('pdaApp')
       .state('courses-list', {
         url: '/courses',
         templateUrl: 'client/collections/courses/list/courses-list.view.ng.html',
-        controller: 'CourseListCtrl'
+        controller: 'CourseListController'
       });
   });

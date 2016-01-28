@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('pdaApp')
-  .controller('CourseListCtrl', function($scope, $reactive, $state) {
+  .controller('CourseListController', function($scope, $reactive, $state) {
     $reactive(this).attach($scope);
 
     $scope.page = 1;
