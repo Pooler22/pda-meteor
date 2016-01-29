@@ -4,13 +4,10 @@ angular.module('pdaApp')
   .controller('CourseDetailsController', function($scope, $stateParams) {
     $scope.subscribe('courses');
     $scope.subscribe('pages');
-    $scope.subscribe('userProgress');
-
 
     $scope.helpers({
       course: function() {
         var course = Courses.findOne($stateParams.courseId);
-
 
         Meteor.call('prepareStructure', $stateParams.courseId, Meteor.userId(),
           function(
@@ -19,8 +16,6 @@ angular.module('pdaApp')
             console.log(response);
             console.log("Error: " + err);
           });
-
-
         return course;
       },
       header: function() {

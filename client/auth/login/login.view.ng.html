@@ -21,7 +21,7 @@
       </div>
       <md-divider class="inset"></md-divider>
 
-      <form name="loginForm" layout="column" layout-fill layout-padding layout-margin>
+      <form name="loginForm" layout="column" ng-submit="login.login()"  layout-fill layout-padding layout-margin>
         <md-input-container>
           <label> Email </label>
           <input type="text" ng-model="login.credentials.email" aria-label="email" required/>
@@ -32,7 +32,7 @@
         </md-input-container>
         <div layout="row" layout-align="space-between center">
           <a class="md-button" href="/reset-password">Zapomniałeś hasło?</a>
-          <md-button class="md-raised md-primary" ng-click="login.login()" aria-label="login"
+          <md-button class="md-raised md-primary" type="submit" aria-label="login"
                      ng-disabled="login.loginForm.$invalid()">Zaloguj się
           </md-button>
         </div>

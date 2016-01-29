@@ -8,14 +8,16 @@
     <md-content>
       <md-list>
         <md-subheader class="md-no-sticky">Wybierz kurs aby go rozpocząć.</md-subheader>
-        <md-list-item dir-paginate="course in courses | itemsPerPage: perPage" total-items="coursesCount" current-page='page' ng-click="startCourse(course)" class="secondary-button-padding">
+        <md-list-item dir-paginate="course in courses | itemsPerPage: perPage" total-items="coursesCount" current-page='page' class="secondary-button-padding" layout-padding>
           <div class="md-list-item-text" layout="row">
             <h4>{{ course.name }} - {{ course.description }}</h4>
-            <span class="md-secondary">
-              <md-button ng-click="startCourse(course._id)" >Rozpocznij kurs</md-button>
-              <md-button ng-click="editCourse(course._id)" >Edytuj kurs</md-button>
-              <md-button ng-click="removeCourse(course._id)" >Usuń kurs</md-button>
-          </span>
+            <span class="flex"></span>
+            <div class="md-secondary">
+              <md-button class="md-raised md-primary" ng-click="startCourse(course._id)" >Rozpocznij kurs</md-button>
+              <md-button class="md-raised md-primary" ng-click="editCourse(course._id)" >Edytuj kurs</md-button>
+              <md-button class="md-raised md-primary" ng-click="removeCourse(course._id)" >Usuń kurs</md-button>
+            </div>
+          <md-divider ></md-divider>
           </div>
         </md-list-item>
       </md-list>

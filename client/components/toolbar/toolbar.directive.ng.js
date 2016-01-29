@@ -6,7 +6,7 @@ angular.module('pdaApp')
       restrict: 'E',
       templateUrl: 'client/components/toolbar/toolbar.view.ng.html',
       controllerAs: 'toolbar',
-      controller: function($scope, $reactive) {
+      controller: function($scope, $reactive, $state) {
         $reactive(this).attach($scope);
 
         this.helpers({
@@ -22,6 +22,7 @@ angular.module('pdaApp')
           Accounts.logout();
           $state.go('index');
         };
+
       }
     };
   });
