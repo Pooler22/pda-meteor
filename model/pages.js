@@ -3,12 +3,12 @@ Pages = new Mongo.Collection('pages');
 Pages.allow({
   insert: function(userId, page) {
     page.name_sort = page.name.toLowerCase();
-    return true;
+    return !!userId;
   },
   update: function(userId, page, fields, modifier) {
-    return true;
+    return !!userId;
   },
   remove: function(userId, page) {
-    return true;
+    return !!userId;
   }
 });

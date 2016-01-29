@@ -4,12 +4,13 @@ Courses.allow({
   insert: function(userId, course) {
     course.name_sort = course.name.toLowerCase();
     Meteor.call('initCourseFiles', course._id);
+    return !!userId;
   },
   update: function(userId, course, fields, modifier) {
-    return true;
+    return !!userId;
   },
   remove: function(userId, course) {
-    return true;
+    return !!userId;
   }
 });
 

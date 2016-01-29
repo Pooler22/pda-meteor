@@ -6,6 +6,16 @@ angular.module('pdaApp')
       .state('pages-create', {
         url: '/pages/create',
         templateUrl: 'client/collections/pages/create/page-create.view.ng.html',
-        controller: 'PageCreateController'
+        controller: 'PageCreateController',
+        resolve: {
+          currentUser: ($q) => {
+            if (Meteor.userId() == null) {
+              return $q.reject('AUTH_REQUIRED');
+            }
+            else {
+              return $q.resolve();
+            }
+          }
+        }
       });
   });
