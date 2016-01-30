@@ -1,5 +1,4 @@
 Meteor.startup(function() {
-  // Server methods
   Meteor.methods({
     checkCode: function(courseId, pageId, UserId, codeToTest) {
       var fs = Npm.require('fs');
@@ -63,6 +62,5 @@ Meteor.startup(function() {
       });
       return future.wait();
     },
-
   });
 });
