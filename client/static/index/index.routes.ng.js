@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('pdaApp')
   .config(function($stateProvider) {
@@ -14,8 +14,8 @@ angular.module('pdaApp')
         url: '/register',
         template: '<register></register>'
       })
-      .state('reset-password', {
-        url: '/reset-password',
-        template: '<reset-password></reset-password>'
+      .state('resetPassword', {
+        url: '/resetPassword',
+        template: '<resetPassword></resetPassword>'
       });
   });

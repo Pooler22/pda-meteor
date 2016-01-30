@@ -1,8 +1,8 @@
-angular.module("pdaApp").directive('reset-password', function() {
+angular.module("pdaApp").directive('resetPassword', function() {
   return {
     restrict: 'E',
-    templateUrl: 'client/auth/reset-password/reset-password.view.ng.html',
-    controllerAs: 'reset-password',
+    templateUrl: 'client/auth/resetPassword/resetPassword.view.ng.html',
+    controllerAs: 'resetPassword',
     controller: function($scope, $reactive, $state) {
       $reactive(this).attach($scope);
 

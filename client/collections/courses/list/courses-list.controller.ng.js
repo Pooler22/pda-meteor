@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('pdaApp')
   .controller('CourseListController', function($scope, $reactive, $state) {

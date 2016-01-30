@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('pdaApp')
   .controller('CourseEditController', function($scope, $stateParams,
