@@ -11,7 +11,7 @@
       <form name="registerForm" ng-submit="register.register()" layout="column" layout-fill layout-padding layout-margin>
         <md-input-container>
           <label> Email </label>
-          <input type="text" ng-model="register.credentials.email" placeholder="email" aria-label="email" required/>
+          <input type="email" ng-model="register.credentials.email" placeholder="email" aria-label="email" required/>
         </md-input-container>
         <md-input-container>
           <label> Hasło </label>
@@ -36,9 +36,6 @@
           <span>Twitter </span>
         </md-button>
       </div>
-      <md-toolbar ng-show="register.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
-        <p class="md-body-1">{{ register.error.reason }}</p>
-      </md-toolbar>
 
       <md-divider></md-divider>
       <div layout="row" layout-align="center">

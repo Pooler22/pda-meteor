@@ -6,24 +6,18 @@ angular.module('pdaApp')
       restrict: 'E',
       templateUrl: 'client/components/toolbar/toolbar.view.ng.html',
       controllerAs: 'toolbar',
-      controller: function($scope, $reactive, $state) {
+      controller: function($scope, $reactive, $state, $mdToast) {
         $reactive(this).attach($scope);
 
         this.helpers({
-          isLoggedIn: () => {
-            return Meteor.userId() !== null;
-          },
           currentUser: () => {
             return Meteor.user();
           },
         });
 
-        this.email = () => {
-          if (this.isLoggedIn)
-            return this.getReactively('currentUser').emails[0].address;
-          return "no-email";
-        };
         this.logout = () => {
+          $mdToast.show($mdToast.simple()
+            .textContent("Zostałeś wylogowany."));
           Accounts.logout();
           $state.go('index');
         };

@@ -7,20 +7,20 @@
       </div>
     </md-toolbar>
     <div layout="column" layout-fill layout-margin>
-      <div ng-hide="toolbar.isLoggedIn">
+      <div ng-hide="$auth.currentUser">
         <h3>Jak działa Akademia wzorców projektowych?</h3>
         <p>Po zalogowaniu dostajesz dostęp do bazy z kursami do nauki wzorców projektowych i zasad dobrego programowania.</p>
         <p>Każdy kurs podzeilony jest na rozdziały, w których zapoznasz się z wiedzą teoretyczną.</p>
         <p>Dodatkowo w kursach znajdują się ćwiczenia praktyczne.</p>
         <p>Aby zacząć naukę zarejestruj i zaloguj.</p>
-        <div layout="row">
-          <md-button class="md-raised md-primary" ng-href="/register" layout-fill>Rejestracja</md-button>
-          <md-button class="md-raised md-primary" ng-href="/login" layout-fill>Logowanie</md-button>
+        <div layout="row" layout-fill>
+          <md-button class="md-raised md-primary" ng-href="/register">Rejestracja</md-button>
+          <md-button class="md-raised md-primary" ng-href="/login">Logowanie</md-button>
         </div>
       </div>
-      <div ng-show="toolbar.isLoggedIn">
+      <div ng-show="$auth.currentUser" layout-padding>
         <p >Witaj {{ toolbar.currentUser.emails[0].address }}</p>
-        <md-button class="md-raised md-primary" ng-click="toolbar.logout()">Wyloguj się</md-button>
+        <md-button class="md-raised md-primary" ng-click="toolbar.logout()" >Wyloguj się</md-button>
       </div>
     </div>
   </md-whiteframe>

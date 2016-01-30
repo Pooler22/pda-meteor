@@ -24,7 +24,7 @@
       <form name="loginForm" layout="column" ng-submit="login.login()"  layout-fill layout-padding layout-margin>
         <md-input-container>
           <label> Email </label>
-          <input type="text" ng-model="login.credentials.email" aria-label="email" required/>
+          <input type="email" ng-model="login.credentials.email" aria-label="email" required/>
         </md-input-container>
         <md-input-container>
           <label> Hasło </label>
@@ -37,9 +37,6 @@
           </md-button>
         </div>
       </form>
-      <md-toolbar ng-show="login.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
-        <p class="md-body-1">{{ login.error.reason }}</p>
-      </md-toolbar>
       <md-divider></md-divider>
       <div layout="row" layout-align="center">
         <a class="md-button" href="/register">Potrzebujesz konto?</a>
