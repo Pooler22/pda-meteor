@@ -3,17 +3,17 @@
 
   <md-input-container>
     <label>Nazwa</label>
-    <input ng-model="newCourse.name" placeholder="Nazwa">
+    <input ng-model="newCourse.name" placeholder="Nazwa" required>
   </md-input-container>
 
   <md-input-container>
     <label>Opis</label>
-    <input ng-model="newCourse.description" placeholder="Opis">
+    <input ng-model="newCourse.description" placeholder="Opis" required>
   </md-input-container>
 
   <md-switch ng-model="newCourse.publicAcces">
     Dostęp publiczny
   </md-switch>
 
-  <input class="md-button" type="submit" value="Dodaj kurs">
+  <input class="md-button" type="submit" ng-disabled="form.$invalid" value="Dodaj kurs">
 </form>
