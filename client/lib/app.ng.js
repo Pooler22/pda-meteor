@@ -3,7 +3,8 @@ angular.module('pdaApp', [
   'ui.router',
   'ngMaterial',
   'angularUtils.directives.dirPagination',
-  'accounts.ui'
+  'accounts.ui',
+  'angular-meteor.auth'
 ]);
 
 onReady = function() {

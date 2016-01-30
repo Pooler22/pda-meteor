@@ -4,15 +4,11 @@
   <md-input-container>
     <label>Nazwa</label>
     <input ng-model="newCourse.name" id="name" placeholder="Nazwa" required>
-    <div ng-messages="form.name.$error">
-      <div ng-message="required" ng-if="form.name.$submitted || form.name.$touched">Tytuł jest wymagany.</div>
-    </div>
   </md-input-container>
 
   <md-input-container>
     <label>Opis</label>
     <input ng-model="newCourse.description" placeholder="Opis" required>
-    <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Opis jest wymagany.</p>
   </md-input-container>
 
   <md-switch ng-model="newCourse.publicAcces">

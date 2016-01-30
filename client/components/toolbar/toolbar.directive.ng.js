@@ -15,14 +15,18 @@ angular.module('pdaApp')
           },
           currentUser: () => {
             return Meteor.user();
-          }
+          },
         });
 
+        this.email = () => {
+          if (this.isLoggedIn)
+            return this.getReactively('currentUser').emails[0].address;
+          return "no-email";
+        };
         this.logout = () => {
           Accounts.logout();
           $state.go('index');
         };
-
       }
     };
   });
