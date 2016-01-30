@@ -1,5 +1,5 @@
+'use strict';
 Meteor.startup(function() {
-
   //load default courses
   if (Courses.find().count() === 0) {
     var courses = [{

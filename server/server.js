@@ -1,3 +1,4 @@
+'use strict';
 Meteor.startup(function() {
   Meteor.methods({
     checkCode: function(courseId, pageId, UserId, codeToTest) {

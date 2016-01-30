@@ -1,3 +1,5 @@
+'use strict';
+
 Pages = new Mongo.Collection('pages');
 
 Pages.allow({

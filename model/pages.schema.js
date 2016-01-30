@@ -1,24 +1,4 @@
-CoursesSchema = new SimpleSchema({
-  "_id": {
-    type: Meteor.ObjectID
-  },
-  "name": {
-    type: String,
-    max: 20,
-  },
-  "description": {
-    type: String,
-  },
-  "languages": {
-    type: [String],
-    optional: true
-  },
-  "publicAcces": {
-    type: Boolean,
-    optional: true
-  },
-});
-Courses.attachSchema(CoursesSchema);
+'use strict';
 
 PagesSchema = new SimpleSchema({
   "_id": {

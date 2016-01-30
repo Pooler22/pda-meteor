@@ -1,3 +1,5 @@
+'use strict';
+
 Courses = new Mongo.Collection('courses');
 
 Courses.allow({
@@ -24,7 +26,7 @@ Meteor.methods({
   },
 
   coursePages: function(courseId) {
-    var tmp = Courses.findOne(courseId)["pageIds"];
+    var tmp = Courses.findOne(courseId).pageIds;
     var tmp2 = [];
     var val;
     for (val in tmp) {

@@ -1,3 +1,4 @@
+'use strict';
 Meteor.methods({
   addCourse: function(newCourse) {
     newCourse.pages = [];
