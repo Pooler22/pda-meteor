@@ -1,5 +1,3 @@
-'use strict';
-
 CoursesSchema = new SimpleSchema({
   "_id": {
     type: Meteor.ObjectID

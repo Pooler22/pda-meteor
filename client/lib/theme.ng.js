@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('pdaApp')
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')

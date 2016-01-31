@@ -1,5 +1,3 @@
-'use strict';
-
 PagesSchema = new SimpleSchema({
   "_id": {
     type: Meteor.ObjectID

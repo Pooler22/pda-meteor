@@ -1,5 +1,3 @@
-'use strict';
-
 Courses = new Mongo.Collection('courses');
 
 Courses.allow({

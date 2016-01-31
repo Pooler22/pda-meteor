@@ -1,4 +1,3 @@
-'use strict';
 Meteor.publish('pages', function(options, searchString) {
   var where = {
     'name': {

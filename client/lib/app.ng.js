@@ -1,4 +1,3 @@
-'use strict';
 angular.module('pdaApp', [
   'angular-meteor',
   'ui.router',

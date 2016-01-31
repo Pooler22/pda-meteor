@@ -1,5 +1,3 @@
-'use strict';
-
 Meteor.publish('courses', function(options, searchString) {
   var where = {
     'name': {
