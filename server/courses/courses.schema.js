@@ -1,4 +1,5 @@
-CoursesSchema = new SimpleSchema({
+Schema = {};
+Schema.Course = new SimpleSchema({
   "_id": {
     type: Meteor.ObjectID
   },
@@ -23,4 +24,4 @@ CoursesSchema = new SimpleSchema({
     optional: true
   },
 });
-//Courses.attachSchema(CoursesSchema);
+Courses.attachSchema(Schema.Course);

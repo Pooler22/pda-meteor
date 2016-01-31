@@ -1,6 +1,6 @@
 Meteor.startup(function() {
-  //load default courses
   if (Courses.find().count() === 0) {
+    // to do: add course about best practise
     var courses = [{
       "name": "Fasada",
       "description": "ang. Fasade",
@@ -26,7 +26,6 @@ Meteor.startup(function() {
         }]
       }]
     ];
-
     var tmpId;
     for (var i = 0; i < courses.length; i++) {
       tmpId = Courses.insert(courses[i]);
@@ -35,7 +34,7 @@ Meteor.startup(function() {
         Pages.insert(pages[i][j]);
       }
     }
-    // load default user
+
     var credentials = {
       firstName: "Administracja",
       lastName: "Administracja",
@@ -43,7 +42,6 @@ Meteor.startup(function() {
       password: 'asdasdasd',
       roles: 'Admin'
     };
-
     Accounts.createUser(credentials);
   }
 });

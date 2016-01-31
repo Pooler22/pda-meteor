@@ -22,6 +22,7 @@ angular.module('pdaApp')
       }
     });
 
+    //to do: repair subscribe
     $scope.subscribe('pages', () => {
       return [{
         sort: $scope.getReactively('sort'),

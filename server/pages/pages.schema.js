@@ -1,4 +1,4 @@
-PagesSchema = new SimpleSchema({
+Schema.Page = new SimpleSchema({
   "_id": {
     type: Meteor.ObjectID
   },
@@ -47,4 +47,4 @@ PagesSchema = new SimpleSchema({
     optional: true
   }
 });
-//Pages.attachSchema(PagesSchema);
+Pages.attachSchema(Schema.Page);

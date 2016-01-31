@@ -2,8 +2,7 @@
 
 angular.module('pdaApp')
   .controller('PageCreateController', function($scope) {
-    $scope.subscribe('pages');
-
+    
     $scope.save = function() {
       if ($scope.form.$valid) {
         //Pages.insert($scope.newPage);

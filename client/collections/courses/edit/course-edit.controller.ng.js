@@ -3,9 +3,9 @@
 angular.module('pdaApp')
   .controller('CourseEditController', function($scope, $stateParams,
     $state) {
-    $scope.subscribe('courses');
-    $scope.subscribe('pages');
-
+      $scope.subscribe('pages');
+        $scope.subscribe('courses');
+    
     $scope.helpers({
       course: () => {
         return Courses.findOne({"_id":$stateParams.courseId,"publicAcces":true});

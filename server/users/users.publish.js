@@ -1,4 +1,4 @@
-Meteor.publish('userData', function() {
+Meteor.publish('users', function() {
     var currentUser;
     currentUser = this.userId;
     if (currentUser) {

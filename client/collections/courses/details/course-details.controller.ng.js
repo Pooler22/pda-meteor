@@ -2,20 +2,20 @@
 
 angular.module('pdaApp')
   .controller('CourseDetailsController', function($scope, $stateParams) {
-    $scope.subscribe('courses');
-    $scope.subscribe('pages');
-
+    //to do: repair subscribe
+      $scope.subscribe('pages');
+        $scope.subscribe('courses');
     $scope.helpers({
       course: function() {
         var course = Courses.findOne($stateParams.courseId);
 
-        Meteor.call('prepareStructure', $stateParams.courseId, Meteor.userId(),
-          function(
-            err,
-            response) {
-            console.log(response);
-            console.log("Error: " + err);
-          });
+        Meteor.call('prepareStructure', $stateParams.courseId, Meteor.userId(), (error) => {
+          if (error) {
+            console.log('Oops, unable to rsvp!');
+          } else {
+            console.log('RSVP Done!');
+          }
+        });
         return course;
       },
       header: function() {

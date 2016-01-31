@@ -4,9 +4,6 @@ angular.module('pdaApp')
   .controller('CourseListController', function($scope, $reactive, $state) {
     $reactive(this).attach($scope);
 
-    $scope.subscribe('userData');
-
-
     $scope.page = 1;
     $scope.perPage = 10;
     $scope.sort = {
@@ -27,7 +24,7 @@ angular.module('pdaApp')
         return Meteor.user().profile.roles == "Admin";
       }
     });
-
+    //to do: repair subscribe
     $scope.subscribe('courses', () => {
       return [{
         sort: $scope.getReactively('sort'),
@@ -36,8 +33,6 @@ angular.module('pdaApp')
           parseInt($scope.getReactively('perPage')))
       }, $scope.getReactively('search')];
     });
-
-
 
     $scope.pageChanged = function(newPage) {
       $scope.page = newPage;
