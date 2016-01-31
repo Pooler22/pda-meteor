@@ -3,10 +3,10 @@
 angular.module('pdaApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('pages-create', {
-        url: '/pages/create',
-        templateUrl: 'client/collections/pages/create/page-create.view.ng.html',
-        controller: 'PageCreateController',
+      .state('courses-list', {
+        url: '/courses',
+        templateUrl: 'client/components/courses/list/courses-list.view.ng.html',
+        controller: 'CourseListController',
         resolve: {
           currentUser: ($q) => {
             if (Meteor.userId() == null) {

@@ -3,13 +3,13 @@
 angular.module('pdaApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('courses-add', {
-        url: '/courses/add',
-        templateUrl: 'client/collections/courses/add/courses-add.view.ng.html',
-        controller: 'CourseAddController',
+      .state('pages-create', {
+        url: '/pages/create',
+        templateUrl: 'client/components/pages/create/page-create.view.ng.html',
+        controller: 'PageCreateController',
         resolve: {
           currentUser: ($q) => {
-            if ((Meteor.userId() == null) || (Meteor.user().profile.roles != "Admin")) {
+            if (Meteor.userId() == null) {
               return $q.reject('AUTH_REQUIRED');
             }
             else {

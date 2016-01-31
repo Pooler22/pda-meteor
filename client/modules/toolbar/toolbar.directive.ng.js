@@ -4,7 +4,7 @@ angular.module('pdaApp')
   .directive('toolbar', function() {
     return {
       restrict: 'E',
-      templateUrl: 'client/components/toolbar/toolbar.view.ng.html',
+      templateUrl: 'client/modules/toolbar/toolbar.view.ng.html',
       controllerAs: 'toolbar',
       controller: function($scope, $reactive, $state, $mdToast) {
         $reactive(this).attach($scope);

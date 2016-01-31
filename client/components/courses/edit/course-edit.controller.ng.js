@@ -5,12 +5,12 @@ angular.module('pdaApp')
     $state) {
       $scope.subscribe('pages');
         $scope.subscribe('courses');
-    
+
     $scope.helpers({
       course: () => {
         return Courses.findOne({"_id":$stateParams.courseId,"publicAcces":true});
       },
-      coursePages: () => {
+        pages: () => {
         return Pages.find({
           "ownerId": $stateParams.courseId
         });
@@ -38,11 +38,12 @@ angular.module('pdaApp')
     $scope.createPage = function() {
       $scope.newPage.forbiddenWords = ["import"];
       $scope.newPage.requiredWords = ["class"];
-      Meteor.call('createPage', $scope.course._id, $scope.newPage);
+      $scope.newPage.ownerId = $stateParams.courseId;
+      Meteor.call('createPage', $scope.newPage);
       $scope.newPage = undefined;
     };
 
-    $scope.editPage = function(pageObject) {
+    $scope.updatePage = function(pageObject) {
       Pages.update(pageObject._id, {
         $set: {
           "name": pageObject.name,
