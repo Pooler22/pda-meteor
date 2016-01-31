@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('pdaApp')
   .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -13,7 +11,7 @@ angular.module('pdaApp')
         case 'AUTH_REQUIRED':
         case 'FORBIDDEN':
         case 'UNAUTHORIZED':
-          $state.go('main');
+          $state.go('index');
           break;
       }
     });

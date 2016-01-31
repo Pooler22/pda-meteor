@@ -1,0 +1,55 @@
+<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+  <md-whiteframe layout="column" flex flex-md="70" flex-lg="70" flex-gt-lg="50" class="md-whiteframe-z2" layout-fill>
+    <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
+      <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+        <h3 class="md-display-1">Kursy</h3>
+        <span class="flex"></span>
+        <md-button ng-href="/courses/add" ng-show="isAdmin" class="md-raised">Dodaj kurs</md-button>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list>
+        <md-subheader class="md-no-sticky">Wybierz kurs aby go rozpocząć.</md-subheader>
+        <md-list-item dir-paginate="course in courses | itemsPerPage: perPage" ng-click="startCourse(course._id)" total-items="coursesCount" current-page='page' class="secondary-button-padding">
+          <div class="md-list-item-text" layout="row">
+            <h2 layout-padding>{{ course.name }}
+              -
+              {{ course.description }}</h2>
+            <span class="flex"></span>
+            <div class="md-secondary">
+              <md-icon style="color: #3F62B4;"> arrow_forward </md-icon>
+              <span ng-show="isAdmin">
+                <md-button class="md-raised md-primary" ng-click="editCourse(course._id)">Edytuj kurs</md-button>
+                <md-button class="md-raised md-primary" ng-click="removeCourse(course._id)">Usuń kurs</md-button>
+              </span>
+            </div>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-whiteframe>
+</md-content>
+
+<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+  <md-whiteframe layout="column" flex flex-md="70" flex-lg="70" flex-gt-lg="50" class="md-whiteframe-z2" layout-fill>
+    <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
+      <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+        <h3 class="md-display-1">Wyszukiwanie kursów</h3>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+      <div layout="column" layout-margin>
+        <md-input-container>
+          <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">
+        </md-input-container>
+        <p>Sotruj:</p>
+        <md-select aria-label="orderProperty" ng-model="orderProperty">
+          <md-option value="1">Rosnąco</md-option>
+          <md-option value="-1">Malejąco</md-option>
+        </md-select>
+      </div>
+    </md-content>
+  </md-whiteframe>
+</md-content>

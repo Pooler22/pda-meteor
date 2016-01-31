@@ -1,12 +1,11 @@
-'use strict'
+'use strict';
 
 angular.module('pdaApp')
   .config(function($stateProvider) {
     $stateProvider
       .state('index', {
         url: '/',
-        templateUrl: 'client/static/index/index.view.ng.html',
-        controller: 'IndexCtrl'
+        templateUrl: 'client/static/index/index.view.ng.html'
       }).state('login', {
         url: '/login',
         template: '<login></login>'
@@ -14,8 +13,8 @@ angular.module('pdaApp')
         url: '/register',
         template: '<register></register>'
       })
-      .state('reset-password', {
-        url: '/reset-password',
-        template: '<reset-password></reset-password>'
+      .state('resetPassword', {
+        url: '/resetPassword',
+        template: '<resetPassword></resetPassword>'
       });
   });

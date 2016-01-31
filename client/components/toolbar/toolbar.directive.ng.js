@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('pdaApp')
   .directive('toolbar', function() {
@@ -6,21 +6,36 @@ angular.module('pdaApp')
       restrict: 'E',
       templateUrl: 'client/components/toolbar/toolbar.view.ng.html',
       controllerAs: 'toolbar',
-      controller: function($scope, $reactive) {
+      controller: function($scope, $reactive, $state, $mdToast) {
         $reactive(this).attach($scope);
 
         this.helpers({
-          isLoggedIn: () => {
-            return Meteor.userId() !== null;
-          },
           currentUser: () => {
             return Meteor.user();
+          },
+          name: () => {
+            if(Meteor.user() != null){
+              return Meteor.user().profile.firstName || Meteor.user().profile.name;
+            }
+            else{
+              return "no-name";
+            }
           }
         });
 
         this.logout = () => {
+          $mdToast.show($mdToast.simple()
+            .textContent("Zostałeś wylogowany."));
           Accounts.logout();
           $state.go('index');
+        };
+
+        this.currentUserAdmin = () => {
+          if (Meteor.user().roles.indexOf("Admin") != -1) {
+            return true;
+          } else {
+            return false;
+          }
         };
       }
     };

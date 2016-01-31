@@ -7,38 +7,37 @@
       </div>
     </md-toolbar>
 
+    <md-divider class="inset"></md-divider>
+
+    <div layout="row" layout-fill layout-margin>
+      <p class="md-body-2">Zaloguj się przy użyciu:</p>
+      <md-button class="md-raised" ng-click="login.loginFacebook()">
+        <span>Facebook</span>
+      </md-button>
+    </div>
+
     <div layout="column" layout-fill layout-margin layout-padding>
-      <form name="registerForm" layout="column" layout-fill layout-padding layout-margin>
+      <form name="registerForm" ng-submit="register.register()" layout="column" layout-fill layout-padding layout-margin>
+        <md-input-container>
+          <label>Imię</label>
+          <input type="text" ng-model="register.credentials.firstName" placeholder="imię" aria-label="firstName" required/>
+        </md-input-container>
+        <md-input-container>
+          <label>Nazwisko</label>
+          <input type="text" ng-model="register.credentials.lastName" placeholder="nazwisko" aria-label="lastName" required/>
+        </md-input-container>
         <md-input-container>
           <label> Email </label>
-          <input type="text" ng-model="register.credentials.email" placeholder="email" aria-label="email" required/>
+          <input type="email" ng-model="register.credentials.email" placeholder="email" aria-label="email" required/>
         </md-input-container>
         <md-input-container>
           <label> Hasło </label>
           <input type="password" ng-model="register.credentials.password" placeholder="hasło" aria-label="password" required/>
         </md-input-container>
         <div layout="row" layout-align="end center">
-          <md-button class="md-raised md-primary" ng-click="register.register()" aria-label="login" ng-disabled="register.registerForm.$invalid()">Zarejestruj się</md-button>
+          <md-button class="md-raised md-primary" type="submit" aria-label="login" ng-disabled="register.registerForm.$invalid()">Zarejestruj się</md-button>
         </div>
       </form>
-
-      <md-divider class="inset"></md-divider>
-
-      <div layout="row" layout-fill layout-margin>
-        <p class="md-body-2"> Zarejestruj się przy użyciu:</p>
-        <md-button class="md-raised">
-          <span> Google</span>
-        </md-button>
-        <md-button class="md-raised">
-          <span>Facebook </span>
-        </md-button>
-        <md-button class="md-raised">
-          <span>Twitter </span>
-        </md-button>
-      </div>
-      <md-toolbar ng-show="register.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
-        <p class="md-body-1">{{ register.error.reason }}</p>
-      </md-toolbar>
 
       <md-divider></md-divider>
       <div layout="row" layout-align="center">
