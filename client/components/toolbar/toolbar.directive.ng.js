@@ -14,7 +14,12 @@ angular.module('pdaApp')
             return Meteor.user();
           },
           name: () => {
-            return Meteor.user().profile.firstName || Meteor.user().profile.name || "no-name";
+            if(Meteor.user() != null){
+              return Meteor.user().profile.firstName || Meteor.user().profile.name;
+            }
+            else{
+              return "no-name";
+            }
           }
         });
 

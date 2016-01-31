@@ -6,6 +6,11 @@ CoursesSchema = new SimpleSchema({
     type: String,
     max: 20,
   },
+  "name_sort":{
+    type: String,
+    max: 20,
+    optional: true
+  },
   "description": {
     type: String,
   },
@@ -18,4 +23,4 @@ CoursesSchema = new SimpleSchema({
     optional: true
   },
 });
-Courses.attachSchema(CoursesSchema);
+//Courses.attachSchema(CoursesSchema);

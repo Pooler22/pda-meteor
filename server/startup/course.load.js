@@ -37,9 +37,11 @@ Meteor.startup(function() {
     }
     // load default user
     var credentials = {
+      firstName: "Administracja",
+      lastName: "Administracja",
       email: 'a@a.com',
       password: 'asdasdasd',
-      roles: ['Admin']
+      roles: 'Admin'
     };
 
     Accounts.createUser(credentials);

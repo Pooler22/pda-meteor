@@ -22,6 +22,9 @@ angular.module('pdaApp')
       },
       coursesCount: () => {
         return Counts.get('numberOfCourses');
+      },
+      isAdmin:()=>{
+        return Meteor.user().profile.roles == "Admin";
       }
     });
 
