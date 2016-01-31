@@ -1,3 +1,4 @@
+//to do: check
 Meteor.startup(function() {
   Meteor.methods({
     checkCode: function(courseId, pageId, UserId, codeToTest) {

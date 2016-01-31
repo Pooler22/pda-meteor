@@ -23,4 +23,8 @@ angular.module('pdaApp')
         });
       }
     };
+
+    $scope.backToListCourse = function() {
+      $state.go('courses-list');
+    };
   });
