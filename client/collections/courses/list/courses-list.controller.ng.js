@@ -4,6 +4,9 @@ angular.module('pdaApp')
   .controller('CourseListController', function($scope, $reactive, $state) {
     $reactive(this).attach($scope);
 
+    $scope.subscribe('userData');
+
+
     $scope.page = 1;
     $scope.perPage = 10;
     $scope.sort = {

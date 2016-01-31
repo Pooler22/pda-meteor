@@ -8,7 +8,7 @@ angular.module('pdaApp')
 
     $scope.helpers({
       course: () => {
-        return Courses.findOne($stateParams.courseId);
+        return Courses.findOne({"_id":$stateParams.courseId,"publicAcces":true});
       },
       coursePages: () => {
         return Pages.find({

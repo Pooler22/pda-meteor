@@ -2,7 +2,7 @@
   <navbar-left>
     <md-button ng-href="/">Akademia wzorców projektowych</md-button>
       <md-button ng-href="/courses" ng-show="$auth.currentUser">Kursy</md-button>
-      <md-button ng-href="/courses/add" ng-show="$auth.currentUser">Dodaj kurs</md-button>
+      <md-button ng-href="/courses/add" ng-show="toolbar.currentUser">Dodaj kurs</md-button>
   </navbar-left>
 
   <span class="flex"></span>
@@ -13,7 +13,7 @@
       <md-button ng-href="/register">Rejestracja</md-button>
     </div>
     <div ng-show="$auth.currentUser">
-      <md-button label="email">{{ toolbar.currentUser.emails[0].address }}</md-button>
+      <md-button label="email">{{ toolbar.name }}</md-button>
       <md-button ng-click="toolbar.logout()">Wyloguj się</md-button>
     </div>
   </navbar-right>

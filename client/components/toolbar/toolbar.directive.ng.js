@@ -13,6 +13,9 @@ angular.module('pdaApp')
           currentUser: () => {
             return Meteor.user();
           },
+          name: () => {
+            return Meteor.user().profile.firstName || Meteor.user().profile.name || "no-name";
+          }
         });
 
         this.logout = () => {
@@ -20,6 +23,14 @@ angular.module('pdaApp')
             .textContent("Zostałeś wylogowany."));
           Accounts.logout();
           $state.go('index');
+        };
+
+        this.currentUserAdmin = () => {
+          if (Meteor.user().roles.indexOf("Admin") != -1) {
+            return true;
+          } else {
+            return false;
+          }
         };
       }
     };

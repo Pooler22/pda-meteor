@@ -10,7 +10,8 @@
         <md-subheader class="md-no-sticky">Wybierz kurs aby go rozpocząć.</md-subheader>
         <md-list-item dir-paginate="course in courses | itemsPerPage: perPage" total-items="coursesCount" current-page='page' class="secondary-button-padding" layout-padding>
           <div class="md-list-item-text" layout="row">
-            <h4>{{ course.name }} - {{ course.description }}</h4>
+            <h2>{{ course.name }}</h2>
+            <h4>-{{ course.description }}</h4>
             <span class="flex"></span>
             <div class="md-secondary">
               <md-button class="md-raised md-primary" ng-click="startCourse(course._id)" >Rozpocznij kurs</md-button>
@@ -39,7 +40,7 @@
           <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">
         </md-input-container>
         <p>Sotruj:</p>
-        <md-select label="orderProperty" ng-model="orderProperty">
+        <md-select aria-label="orderProperty" ng-model="orderProperty">
           <md-option value="1">Rosnąco</md-option>
           <md-option value="-1">Malejąco</md-option>
         </md-select>

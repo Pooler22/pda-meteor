@@ -7,6 +7,9 @@ angular.module('pdaApp')
 
     $scope.save = function() {
       if (this.form.$valid) {
+        if(this.getReactively('newCourse').publicAcces !== true){
+          this.getReactively('newCourse').publicAcces = false;
+        }
         Meteor.call('addCourse', this.getReactively('newCourse'), function(
           error, id) {
           if (error) {

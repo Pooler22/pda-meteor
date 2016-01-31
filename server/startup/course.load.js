@@ -27,18 +27,19 @@ Meteor.startup(function() {
       }]
     ];
 
-    var tmpIdCourse;
+    var tmpId;
     for (var i = 0; i < courses.length; i++) {
-      tmpIdCourse = Courses.insert(courses[i]);
+      tmpId = Courses.insert(courses[i]);
       for (var j = 0; j < pages[i].length; j++) {
-        pages[j].ownerId = tmpIdCourse;
-        Pages.insert(pages[j]);
+        pages[i][j].ownerId = tmpId;
+        Pages.insert(pages[i][j]);
       }
     }
     // load default user
     var credentials = {
       email: 'a@a.com',
-      password: 'asdasdasd'
+      password: 'asdasdasd',
+      roles: ['Admin']
     };
 
     Accounts.createUser(credentials);
