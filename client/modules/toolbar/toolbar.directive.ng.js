@@ -9,11 +9,13 @@ angular.module('pdaApp')
       controller: function($scope, $reactive, $state, $mdToast) {
         $reactive(this).attach($scope);
 
-        this.helpers({
-          currentUser: () => {
-            return Meteor.user();
-          },
-        });
+        this.currentUser = () => {
+          return Meteor.user();
+        };
+
+        this.currentUserAdmin = () => {
+          return this.currentUserAdmin.roles.indexOf("Admin") != -1;
+        };
 
         this.name = () => {
           if(this.currentUser != null){
@@ -31,13 +33,7 @@ angular.module('pdaApp')
           $state.go('index');
         };
 
-        this.currentUserAdmin = () => {
-          if (Meteor.user().roles.indexOf("Admin") != -1) {
-            return true;
-          } else {
-            return false;
-          }
-        };
+
       }
     };
   });
