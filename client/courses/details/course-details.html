@@ -8,7 +8,7 @@
 
   <md-content flex layout-padding>
     <md-tabs md-dynamic-height md-border-bottom md-autoselect>
-      <md-tab ng-repeat="page in header" label="{{ page.name }}">
+      <md-tab ng-repeat="page in pages" label="{{ page.name }}">
         <md-content class="md-padding" layout="column">
           <p>{{ page.description }}</p>
           <div ng-if="page.haveExercise === true" layout="column" layout-padding>

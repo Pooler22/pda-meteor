@@ -26,7 +26,6 @@ angular.module('pdaApp')
 
         $scope.helpers({
           courses: () => {
-            console.log("działam");
             return Courses.find({}, {
               sort: this.getReactively('sort')
             });
