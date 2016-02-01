@@ -3,7 +3,7 @@ angular.module('pdaApp')
   .directive('coursesedit', function() {
     return {
       restrict: 'E',
-      templateUrl: 'client/components/courses/edit/course-edit.html',
+      templateUrl: 'client/courses/edit/course-edit.html',
       controllerAs: 'coursesedit',
       controller: function($scope, $state, $reactive, $mdToast, $stateParams) {
     $reactive(this).attach($scope);
@@ -23,11 +23,11 @@ angular.module('pdaApp')
     });
 
     $scope.editCourse = function() {
-      Courses.update($scope.course._id, {
+      Courses.update(this.course._id, {
         $set: {
-          name: $scope.course.name,
-          description: $scope.course.description,
-          publicAcces: $scope.course.publicAcces,
+          name: this.course.name,
+          description: this.course.description,
+          publicAcces: this.course.publicAcces,
         }
       });
     };
@@ -37,15 +37,15 @@ angular.module('pdaApp')
       Courses.remove({
         _id: $stateParams.courseId
       });
-      $scope.backToListCourse();
+      this.backToListCourse();
     };
 
     $scope.createPage = function() {
-      $scope.newPage.forbiddenWords = ["import"];
-      $scope.newPage.requiredWords = ["class"];
-      $scope.newPage.ownerId = $stateParams.courseId;
-      Meteor.call('createPage', $scope.newPage);
-      $scope.newPage = undefined;
+      this.newPage.forbiddenWords = ["import"];
+      this.newPage.requiredWords = ["class"];
+      this.newPage.ownerId = $stateParams.courseId;
+      Meteor.call('createPage', this.newPage);
+      this.newPage = undefined;
     };
 
     $scope.updatePage = function(pageObject) {

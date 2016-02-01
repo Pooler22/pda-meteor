@@ -10,7 +10,7 @@
     <md-content>
       <md-list>
         <md-subheader class="md-no-sticky">Wybierz kurs aby go rozpocząć.</md-subheader>
-        <md-list-item dir-paginate="course in courses | itemsPerPage: perPage" ng-click="startCourse(course._id)" total-items="coursesCount" current-page='page' class="secondary-button-padding">
+        <md-list-item dir-paginate="course in  courses | itemsPerPage:  perPage" ng-click="startCourse(course._id)" total-items="coursesCount" current-page='page' class="secondary-button-padding">
           <div class="md-list-item-text" layout="row">
             <span layout-padding>{{ course.name }} - {{ course.description }}</span>
             <span class="flex"></span>
@@ -34,7 +34,7 @@
       </div>
     </md-toolbar>
     <md-content>
-      <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+      <dir-pagination-controls on-page-change=" pageChanged(newPageNumber)"></dir-pagination-controls>
       <div layout="column" layout-margin>
         <md-input-container>
           <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">

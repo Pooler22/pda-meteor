@@ -4,7 +4,7 @@ angular.module('pdaApp')
   .directive('coursedetails', function() {
       return {
         restrict: 'E',
-        templateUrl: 'client/components/courses/details/course-details.html',
+        templateUrl: 'client/courses/details/course-details.html',
         controllerAs: 'coursedetails',
         controller: function($scope, $stateParams, $state, $reactive, $mdToast) {
           $reactive(this).attach($scope);
@@ -55,8 +55,8 @@ angular.module('pdaApp')
           };
 
           $scope.runCode = function(page) {
-            page.result = $scope.containsWorld(page.forbiddenWords, page.startupCode) +
-              $scope.containsWorld1(page.requiredWords, page.startupCode)
+            page.result = this.containsWorld(page.forbiddenWords, page.startupCode) +
+              this.containsWorld1(page.requiredWords, page.startupCode)
             if (page.result === "") {
               console.log("Poprawny kod, czas przesłać go na serwer.");
 

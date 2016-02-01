@@ -5,7 +5,7 @@ angular.module('pdaApp')
     $stateProvider
     .state('index', {
       url: '/',
-      templateUrl: 'client/components/index/index.html'
+      templateUrl: 'client/index/index.html'
     }).state('coursesadd', {
         url: '/courses/add',
         template: '<coursesadd></coursesadd>',

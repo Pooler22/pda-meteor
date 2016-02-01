@@ -1,29 +1,30 @@
 'use strict';
 
-angular.module("pdaApp").directive('login', function() {
+angular.module("pdaApp").directive('register', function() {
       return {
         restrict: 'E',
-        templateUrl: 'client/modules/auth/login/login.view.ng.html',
-        controllerAs: 'login',
+        templateUrl: 'client/auth/register/register.view.ng.html',
+        controllerAs: 'register',
         controller: function($scope, $reactive, $state, $mdToast) {
           $reactive(this).attach($scope);
 
           this.credentials = {
             email: '',
-            password: ''
+            password: '',
+            firstName:'',
+            lastName:''
           };
 
-          this.login = () => {
-            Meteor.loginWithPassword(this.credentials.email, this.credentials
-              .password, (err) => {
-                if (err) {
-                  $mdToast.show($mdToast.simple().textContent(err.reason));
-                } else {
-                  $mdToast.show($mdToast.simple()
-                    .textContent("Zostałeś zalogowany."));
-                  $state.go('index');
-                }
-              });
+          this.register = () => {
+            Accounts.createUser(this.credentials, (err) => {
+              if (err) {
+                $mdToast.show($mdToast.simple().textContent(err.reason));
+              } else {
+                $mdToast.show($mdToast.simple()
+                  .textContent("Zostałeś zarejestrowany."));
+                $state.go('index');
+              }
+            });
           };
 
           this.loginFacebook = () => {
@@ -37,6 +38,7 @@ angular.module("pdaApp").directive('login', function() {
                 }
               });
             };
+
           }
         };
       });
