@@ -13,6 +13,17 @@ angular.module('pdaApp')
         $scope.subscribe('pages');
         $scope.subscribe('courses');
         $scope.helpers({
+          editorOptions: function() {
+            return {
+              lineNumbers: true,
+              mode: "javascript"
+            };
+          },
+
+          editorCode: function() {
+            return "Code to show in editor";
+          },
+
           course: function() {
             Meteor.call('prepareStructure', $stateParams.courseId, Meteor.userId(), (error) => {
               if (error) {
@@ -27,6 +38,24 @@ angular.module('pdaApp')
             });
           }
         });
+
+        $scope.codemirrorLoaded = function(_editor) {
+          // Editor part
+          var _doc = _editor.getDoc();
+          _editor.focus();
+          // Options
+          _editor.setOption('firstLineNumber', 10);
+
+        };
+        $scope.editorOptions = {
+          lineWrapping: true,
+          lineNumbers: true,
+          mode: 'text/x-java',
+        };
+
+        $scope.isSomething = true;
+
+
 
         $scope.containsWorld = function(searchArray, code) {
           var element = null;
@@ -53,16 +82,15 @@ angular.module('pdaApp')
         $scope.runCode = function(page) {
           page.result = this.containsWorld(page.forbiddenWords, page.startupCode) +
             this.containsWorld1(page.requiredWords, page.startupCode)
-            Meteor.call('checkCode', $stateParams.courseId, page._id, Meteor.userId(), page.startupCode, (error, response) => {
-              if (error) {
-                page.result = error;
-                //to do dialog
-              }
-              else{
-                page.result = response;
-              }
-              $scope.$apply();
-            });
+          Meteor.call('checkCode', $stateParams.courseId, page._id, Meteor.userId(), page.startupCode, (error, response) => {
+            if (error) {
+              page.result = error;
+              //to do dialog
+            } else {
+              page.result = response;
+            }
+            $scope.$apply();
+          });
         };
 
       }
