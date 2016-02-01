@@ -4,7 +4,8 @@ angular.module('pdaApp', [
   'ngMaterial',
   'angularUtils.directives.dirPagination',
   'accounts.ui',
-  'angular-meteor.auth'
+  'angular-meteor.auth',
+  'ui.codemirror'
 ]);
 
 onReady = function() {

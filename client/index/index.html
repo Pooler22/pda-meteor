@@ -1,5 +1,5 @@
 <md-content layout="row" layout-align="center start" layout-fill layout-margin>
-  <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+  <md-whiteframe layout="column" flex flex-md="70" flex-lg="70" flex-gt-lg="50" class="md-whiteframe-z2" layout-fill>
 
     <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
       <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div ng-show="$auth.currentUser" layout-padding>
-        <p >Witaj {{ toolbar.name }}</p>
+        <p >Witaj {{ toolbar.name() }}</p>
         <md-button class="md-raised md-primary" ng-click="toolbar.logout()" >Wyloguj się</md-button>
       </div>
     </div>

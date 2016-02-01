@@ -22,9 +22,9 @@
   </form>
 
   <md-tabs md-dynamic-height md-border-bottom md-autoselect class="md-whiteframe-2dp" md-selected="selectedIndex">
-    <md-tab ng-repeat="page in coursePages" label="{{ page.name }}">
+    <md-tab ng-repeat="page in pages" label="{{ page.name }}">
       <md-content layout="column">
-        <form ng-submit="editPage(page)" layout="column">
+        <form ng-submit="updatePage(page)" layout="column">
           <md-input-container>
             <label>Nazwa</label>
             <textarea ng-model="page.name"></textarea>

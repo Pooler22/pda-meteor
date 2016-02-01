@@ -12,7 +12,7 @@
       <md-button ng-href="/register">Rejestracja</md-button>
     </div>
     <div ng-show="$auth.currentUser">
-      <md-button label="email">{{ toolbar.name }}</md-button>
+      <md-button aria-label="name" >{{ toolbar.name() }}</md-button>
       <md-button ng-click="toolbar.logout()">Wyloguj się</md-button>
     </div>
   </navbar-right>

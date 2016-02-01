@@ -15,5 +15,8 @@
     Dostęp publiczny
   </md-switch>
 
-  <input class="md-button" type="submit" ng-disabled="form.$invalid" value="Dodaj kurs">
+  <div layout="row">
+    <input class="md-button md-raised md-primary" type="submit" ng-disabled="form.$invalid" value="Dodaj kurs">
+    <md-button class="md-raised " ng-click="backToListCourse()">Wróć</md-button>
+  </div>
 </form>
