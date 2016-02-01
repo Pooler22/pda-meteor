@@ -19,7 +19,7 @@
         </div>
       </div>
       <div ng-show="$auth.currentUser" layout-padding>
-        <p >Witaj {{ toolbar.name }}</p>
+        <p >Witaj {{ toolbar.name() }}</p>
         <md-button class="md-raised md-primary" ng-click="toolbar.logout()" >Wyloguj się</md-button>
       </div>
     </div>

@@ -1,7 +1,11 @@
 'use strict';
-
 angular.module('pdaApp')
-  .controller('CourseListController', function($scope, $reactive, $state) {
+  .directive('courseslist', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'client/components/courses/list/courses-list.html',
+      controllerAs: 'courseslist',
+      controller: function($scope, $state, $reactive, $mdToast) {
     $reactive(this).attach($scope);
 
     $scope.page = 1;
@@ -39,13 +43,13 @@ angular.module('pdaApp')
     };
 
     $scope.startCourse = function(course) {
-      $state.go('courses-details', {
+      $state.go('coursedetails', {
         courseId: course
       });
     };
 
     $scope.editCourse = function(course) {
-      $state.go('courses-edit', {
+      $state.go('coursesedit', {
         courseId: course
       });
     };
@@ -63,4 +67,7 @@ angular.module('pdaApp')
         };
       }
     });
+
+  }
+};
   });

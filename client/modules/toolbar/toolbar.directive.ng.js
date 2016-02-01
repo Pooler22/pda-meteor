@@ -13,15 +13,16 @@ angular.module('pdaApp')
           currentUser: () => {
             return Meteor.user();
           },
-          name: () => {
-            if(Meteor.user() != null){
-              return Meteor.user().profile.firstName || Meteor.user().profile.name;
-            }
-            else{
-              return "no-name";
-            }
-          }
         });
+
+        this.name = () => {
+          if(this.currentUser != null){
+            return this.getReactively('currentUser.profile.firstName') || this.getReactively('currentUser.profile.name');
+          }
+          else{
+            return "no-name";
+          }
+        };
 
         this.logout = () => {
           $mdToast.show($mdToast.simple()

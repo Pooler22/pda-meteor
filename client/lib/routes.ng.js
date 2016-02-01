@@ -2,15 +2,71 @@ angular.module('pdaApp')
   .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
-    $stateProvider.state('login', {
+    $stateProvider
+    .state('index', {
+      url: '/',
+      templateUrl: 'client/components/index/index.html'
+    }).state('coursesadd', {
+        url: '/courses/add',
+        template: '<coursesadd></coursesadd>',
+        resolve: {
+          currentUser: ($q) => {
+            if ((Meteor.userId() === null) || (Meteor.user().profile.roles != "Admin")) {
+              return $q.reject('AUTH_REQUIRED');
+            }
+            else {
+              return $q.resolve();
+            }
+          }
+        },
+      }).state('coursedetails', {
+        url: '/courses/details/:courseId',
+        template: '<coursedetails></coursedetails>',
+        resolve: {
+          currentUser: ($q) => {
+            if (Meteor.userId() === null) {
+              return $q.reject('AUTH_REQUIRED');
+            }
+            else {
+              return $q.resolve();
+            }
+          }
+        }
+      }).state('coursesedit', {
+        url: '/courses/edit/:courseId',
+        template: '<coursesedit></coursesedit>',
+        resolve: {
+          currentUser: ($q) => {
+            if ((Meteor.userId() === null) || (Meteor.user().profile.roles != "Admin")) {
+              return $q.reject('AUTH_REQUIRED');
+            }
+            else {
+              return $q.resolve();
+            }
+          }
+        }
+      }).state('courseslist', {
+        url: '/courses',
+        template: '<courseslist></courseslist>',
+        resolve: {
+          currentUser: ($q) => {
+            if (Meteor.userId() === null) {
+              return $q.reject('AUTH_REQUIRED');
+            }
+            else {
+              return $q.resolve();
+            }
+          }
+        }
+      }).state('login', {
         url: '/login',
         template: '<login></login>'
       }).state('register', {
         url: '/register',
         template: '<register></register>'
-      }).state('resetPassword', {
-        url: '/resetPassword',
-        template: '<resetPassword></resetPassword>'
+      }).state('resetpw', {
+        url: '/resetpw',
+        template: '<resetpw></resetpw>',
       });
 
     $urlRouterProvider.otherwise('/');

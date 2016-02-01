@@ -1,0 +1,22 @@
+<form class="md-whiteframe-z1" ng-submit="coursesadd.save()" name="form" novalidate layout="column" layout-margin>
+  <p>Dodaj kurs</p>
+
+  <md-input-container>
+    <label>Nazwa</label>
+    <input ng-model="coursesadd.newCourse.name" placeholder="Nazwa" aria-label="Nazwa" required>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Opis</label>
+    <input ng-model="coursesadd.newCourse.description" placeholder="Opis" aria-label="Opis" required>
+  </md-input-container>
+
+  <md-switch ng-model="coursesadd.newCourse.publicAcces">
+    Dostęp publiczny
+  </md-switch>
+
+  <div layout="row">
+    <input class="md-button md-raised md-primary" type="submit" ng-disabled="coursesadd.form.$invalid" value="Dodaj kurs">
+    <md-button class="md-raised " ng-click="coursesadd.backToListCourse()">Wróć</md-button>
+  </div>
+</form>
