@@ -40,9 +40,9 @@
           <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">
         </md-input-container>
         <p>Sotruj:</p>
-        <md-select aria-label="orderProperty" ng-model="orderProperty">
-          <md-option value="1">Rosnąco</md-option>
-          <md-option value="-1">Malejąco</md-option>
+        <md-select aria-label="orderProperty"  md-on-close="coursesList.updateSort()" ng-model="orderProperty">
+          <md-option value="1">A - Z</md-option>
+          <md-option value="-1">Z - A</md-option>
         </md-select>
       </div>
     </md-content>

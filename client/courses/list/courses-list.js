@@ -7,22 +7,30 @@ angular.module('pdaApp')
       controllerAs: 'courseslist',
       controller: function($scope, $reactive, $state, $mdToast) {
         $reactive(this).attach($scope);
-        $scope.page = 1;
-        $scope.perPage = 10;
-        $scope.sort = {
+
+        this.page = 1;
+        this.perPage = 3;
+        this.sort = {
           name_sort: 1
         };
-        $scope.orderProperty = '1';
+        this.orderProperty = '1';
 
         //to do: repair subscribe
-        $scope.subscribe('courses', () => {
+        this.subscribe('courses', () => {
           return [{
-            sort: this.getReactively('sort'),
-            limit: parseInt(this.getReactively('perPage')),
-            skip: ((parseInt(this.getReactively('page'))) - 1) * (
-              parseInt(this.getReactively('perPage')))
-          }, this.getReactively('search')];
+              limit: parseInt(this.perPage),
+              skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+              sort: this.getReactively('sort')
+            },
+            this.getReactively('searchText')
+          ];
         });
+
+        this.updateSort = () => {
+          this.sort = {
+            name: parseInt(this.orderProperty)
+          };
+        };
 
         $scope.helpers({
           courses: () => {
@@ -40,7 +48,7 @@ angular.module('pdaApp')
         });
 
         $scope.pageChanged = function(newPage) {
-          this.page = newPage;
+          $scope.page = newPage;
         };
 
         $scope.startCourse = function(course) {
@@ -54,20 +62,6 @@ angular.module('pdaApp')
             courseId: course
           });
         };
-
-        $scope.removeCourse = function(course) {
-          Courses.remove({
-            _id: course._id
-          });
-        };
-
-        return $scope.$watch('orderProperty', function() {
-          if ($scope.orderProperty) {
-            $scope.sort = {
-              name_sort: parseInt($scope.orderProperty)
-            };
-          }
-        });
       }
     };
   });
