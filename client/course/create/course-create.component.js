@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('pdaApp')
-  .directive('coursesadd', function() {
+  .directive('coursecreate', function() {
     return {
       restrict: 'E',
-      templateUrl: 'client/courses/add/courses-add.html',
-      controllerAs: 'coursesadd',
+      templateUrl: 'client/course/create/course-create.html',
+      controllerAs: 'coursecreate',
       controller: function($scope, $state, $reactive, $mdToast) {
         $reactive(this).attach($scope);
 
@@ -18,7 +18,7 @@ angular.module('pdaApp')
               $mdToast.show($mdToast.simple().textContent(error.reason));
             } else {
               $mdToast.show($mdToast.simple().textContent("Kurs dodany"));
-              $state.go('coursesedit', {
+              $state.go('courseupdate', {
                 courseId: id
               });
             }
@@ -26,7 +26,7 @@ angular.module('pdaApp')
         };
 
         $scope.backToListCourse = function() {
-          $state.go('courseslist');
+          $state.go('courseindex');
         };
       }
     };

@@ -4,7 +4,7 @@ angular.module('pdaApp')
   .directive('toolbar', function() {
     return {
       restrict: 'E',
-      templateUrl: 'client/toolbar/toolbar.view.ng.html',
+      templateUrl: 'client/toolbar/toolbar.html',
       controllerAs: 'toolbar',
       controller: function($scope, $reactive, $state, $mdToast) {
         $reactive(this).attach($scope);
@@ -33,7 +33,7 @@ angular.module('pdaApp')
           Accounts.logout();
           $mdToast.show($mdToast.simple()
             .textContent("Zostałeś wylogowany."));
-          $state.go('index');
+          $state.go('courseupdate');
         };
       }
     };

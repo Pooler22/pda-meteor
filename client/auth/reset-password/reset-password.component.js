@@ -1,7 +1,7 @@
 angular.module("pdaApp").directive('resetpw', function() {
   return {
     restrict: 'E',
-    templateUrl: 'client/auth/reset-password/reset-password.view.ng.html',
+    templateUrl: 'client/auth/reset-password/reset-password.html',
     controllerAs: 'resetpw',
     controller: function($scope, $reactive, $state, $mdToast) {
       $reactive(this).attach($scope);
@@ -17,7 +17,7 @@ angular.module("pdaApp").directive('resetpw', function() {
           } else {
             $mdToast.show($mdToast.simple()
               .textContent("Hasło zostało zresetowane."));
-            $state.go('index');
+            $state.go('homepage');
           }
         });
       };

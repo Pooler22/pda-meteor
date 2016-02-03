@@ -4,7 +4,7 @@
       <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
         <h3 class="md-display-1">Kursy</h3>
         <span class="flex"></span>
-        <md-button ng-href="/courses/add" ng-show="isAdmin" class="md-raised">Dodaj kurs</md-button>
+        <md-button ng-href="/course/create" ng-show="isAdmin" class="md-raised">Dodaj kurs</md-button>
       </div>
     </md-toolbar>
     <md-content>
@@ -40,7 +40,7 @@
           <input type="Search" ng-model="search" placeholder="Wyszukaj kurs">
         </md-input-container>
         <p>Sotruj:</p>
-        <md-select aria-label="orderProperty"  md-on-close="coursesList.updateSort()" ng-model="orderProperty">
+        <md-select aria-label="orderProperty"  md-on-close="coursesList.updateSort()" ng-model="coursesList.orderProperty">
           <md-option value="1">A - Z</md-option>
           <md-option value="-1">Z - A</md-option>
         </md-select>

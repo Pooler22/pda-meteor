@@ -2,58 +2,55 @@ angular.module('pdaApp')
   .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
-    $stateProvider
-    .state('index', {
-      url: '/',
-      templateUrl: 'client/index/index.html'
-    }).state('coursesadd', {
-        url: '/courses/add',
-        template: '<coursesadd></coursesadd>',
+      $stateProvider.state('homepage', {
+        url: '/',
+        templateUrl: 'client/homepage/homepage.html'
+      }).state('coursecreate', {
+        url: '/course/create',
+        template: '<coursecreate></coursecreate>',
         resolve: {
           currentUser: ($q) => {
-            if ((Meteor.userId() === null) || (Meteor.user().profile.roles != "Admin")) {
+            if ((Meteor.userId() === null) || (Meteor.user().profile.roles !=
+                "Admin")) {
               return $q.reject('AUTH_REQUIRED');
-            }
-            else {
+            } else {
               return $q.resolve();
             }
           }
         },
-      }).state('coursedetails', {
-        url: '/courses/details/:courseId',
-        template: '<coursedetails></coursedetails>',
+      }).state('courseshow', {
+        url: '/course/show/:courseId',
+        template: '<courseshow></courseshow>',
         resolve: {
           currentUser: ($q) => {
             if (Meteor.userId() === null) {
               return $q.reject('AUTH_REQUIRED');
-            }
-            else {
+            } else {
               return $q.resolve();
             }
           }
         }
-      }).state('coursesedit', {
-        url: '/courses/edit/:courseId',
-        template: '<coursesedit></coursesedit>',
+      }).state('courseupdate', {
+        url: '/course/update/:courseId',
+        template: '<courseupdate></courseupdate>',
         resolve: {
           currentUser: ($q) => {
-            if ((Meteor.userId() === null) || (Meteor.user().profile.roles != "Admin")) {
+            if ((Meteor.userId() === null) || (Meteor.user().profile.roles !=
+                "Admin")) {
               return $q.reject('AUTH_REQUIRED');
-            }
-            else {
+            } else {
               return $q.resolve();
             }
           }
         }
-      }).state('courseslist', {
-        url: '/courses',
-        template: '<courseslist></courseslist>',
+      }).state('courseindex', {
+        url: '/course',
+        template: '<courseindex></courseindex>',
         resolve: {
           currentUser: ($q) => {
             if (Meteor.userId() === null) {
               return $q.reject('AUTH_REQUIRED');
-            }
-            else {
+            } else {
               return $q.resolve();
             }
           }
@@ -77,7 +74,7 @@ angular.module('pdaApp')
         case 'AUTH_REQUIRED':
         case 'FORBIDDEN':
         case 'UNAUTHORIZED':
-          $state.go('index');
+          $state.go('homepage');
           break;
       }
     });

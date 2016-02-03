@@ -1,19 +1,20 @@
 'use strict';
 angular.module('pdaApp')
-  .directive('courseslist', function() {
+  .directive('courseindex', function() {
     return {
       restrict: 'E',
-      templateUrl: 'client/courses/list/courses-list.html',
-      controllerAs: 'courseslist',
-      controller: function($scope, $reactive, $state, $mdToast) {
+      templateUrl: 'client/course/index/course-index.html',
+      controllerAs: 'courseindex',
+      controller: function($scope, $reactive, $state, $mdToast, $filter) {
         $reactive(this).attach($scope);
 
-        this.page = 1;
         this.perPage = 3;
+        this.page = 1;
         this.sort = {
-          name_sort: 1
+          name: 1
         };
         this.orderProperty = '1';
+        this.searchText = '';
 
         //to do: repair subscribe
         this.subscribe('courses', () => {
@@ -27,12 +28,26 @@ angular.module('pdaApp')
         });
 
         this.updateSort = () => {
+          console.log(this.orderProperty);
           this.sort = {
             name: parseInt(this.orderProperty)
           };
         };
 
+        this.pageChanged = (newPage) => {
+          this.page = newPage;
+        };
+
+        this.updateSort = () => {
+          this.sort = {
+            name: parseInt(this.orderProperty)
+          }
+        };
+
         $scope.helpers({
+          coursesCount: () => {
+            return Counts.get('numberOfCourses');
+          },
           courses: () => {
             return Courses.find({}, {
               sort: this.getReactively('sort')
@@ -52,13 +67,13 @@ angular.module('pdaApp')
         };
 
         $scope.startCourse = function(course) {
-          $state.go('coursedetails', {
+          $state.go('courseshow', {
             courseId: course
           });
         };
 
         $scope.editCourse = function(course) {
-          $state.go('coursesedit', {
+          $state.go('courseupdate', {
             courseId: course
           });
         };

@@ -1,19 +1,19 @@
 angular.module('pdaApp', [
-  'angular-meteor',
-  'ui.router',
-  'ngMaterial',
-  'angularUtils.directives.dirPagination',
-  'accounts.ui',
-  'angular-meteor.auth',
-  'ui.codemirror'
+	'accounts.ui',
+	'angular-meteor',
+	'angular-meteor.auth',
+	'angularUtils.directives.dirPagination',
+	'ngMaterial',
+	'ui.codemirror',
+	'ui.router',
 ]);
 
 onReady = function() {
-  angular.bootstrap(document, ['pdaApp']);
+	angular.bootstrap(document, ['pdaApp']);
 };
 
 if (Meteor.isCordova) {
-  angular.element(document).on('deviceready', onReady);
+	angular.element(document).on('deviceready', onReady);
 } else {
-  angular.element(document).ready(onReady);
+	angular.element(document).ready(onReady);
 }

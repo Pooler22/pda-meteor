@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('pdaApp')
-  .directive('coursedetails', function() {
+  .directive('courseshow', function() {
     return {
       restrict: 'E',
-      templateUrl: 'client/courses/details/course-details.html',
-      controllerAs: 'coursedetails',
+      templateUrl: 'client/course/show/course-show.html',
+      controllerAs: 'courseshow',
       controller: function($scope, $stateParams, $state, $reactive, $mdToast) {
         $reactive(this).attach($scope);
 
@@ -51,8 +51,8 @@ angular.module('pdaApp')
           lineWrapping: true,
           lineNumbers: true,
           mode: 'text/x-java',
+          autofocus: true,
         };
-
         $scope.isSomething = true;
 
 
