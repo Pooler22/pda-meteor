@@ -9,23 +9,30 @@ angular.module('pdaApp')
       controller: function($scope, $state, $reactive, $mdToast) {
         $reactive(this).attach($scope);
 
-        $scope.save = function() {
-          this.getReactively('newCourse').publicAcces = !!this.getReactively('newCourse').publicAcces;
-
-          Meteor.call('addCourse', this.getReactively('newCourse'), function(
-            error, id) {
-            if (error) {
-              $mdToast.show($mdToast.simple().textContent(error.reason));
+        this.newCoursename = {
+          name:'',
+          description:'',
+          publicAcces:'',
+        };
+        // to do: test function
+        this.save = () => {
+          Meteor.call('addCourse', this.getReactively('newCourse'), (err, id) => {
+            if (err) {
+              $mdToast.show($mdToast.simple().textContent(err.reason));
             } else {
               $mdToast.show($mdToast.simple().textContent("Kurs dodany"));
-              $state.go('courseupdate', {
-                courseId: id
-              });
+              this.goToEditCoursePage(id);
             }
           });
         };
-
-        $scope.backToListCourse = function() {
+        // to do: test function
+        this.goToEditCoursePage = (id) =>{
+          $state.go('courseupdate', {
+            courseId: id
+          });
+        };
+        // to do: test function
+        this.backToListCourse = () => {
           $state.go('courseindex');
         };
       }

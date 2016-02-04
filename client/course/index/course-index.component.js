@@ -16,6 +16,7 @@ angular.module('pdaApp')
         this.orderProperty = '1';
         this.searchText = '';
 
+        // to do: test function
         //to do: repair subscribe
         this.subscribe('courses', () => {
           return [{
@@ -26,53 +27,57 @@ angular.module('pdaApp')
             this.getReactively('searchText')
           ];
         });
-
+        // to do: test function
+        this.helpers({
+          // to do: test function
+          coursesCount: () => {
+            return Counts.get('numberOfCourses');
+          },
+          // to do: test function
+          courses: () => {
+            return Courses.find({}, {
+              sort: this.getReactively('sort')
+            });
+          },
+          // to do: test function
+          coursesCount: () => {
+            return Counts.get('numberOfCourses');
+          },
+          // to do: test function
+          isAdmin: () => {
+            console.log("admin" + Meteor.user().profile.roles);
+            return Meteor.user().profile.roles == "Admin";
+          }
+        });
+        // to do: test function
         this.updateSort = () => {
           console.log(this.orderProperty);
           this.sort = {
             name: parseInt(this.orderProperty)
           };
         };
-
+        // to do: test function
         this.pageChanged = (newPage) => {
           this.page = newPage;
         };
-
+        // to do: test function
         this.updateSort = () => {
           this.sort = {
             name: parseInt(this.orderProperty)
-          }
+          };
         };
-
-        $scope.helpers({
-          coursesCount: () => {
-            return Counts.get('numberOfCourses');
-          },
-          courses: () => {
-            return Courses.find({}, {
-              sort: this.getReactively('sort')
-            });
-          },
-          coursesCount: () => {
-            return Counts.get('numberOfCourses');
-          },
-          isAdmin: () => {
-            console.log("admin" + Meteor.user().profile.roles);
-            return Meteor.user().profile.roles == "Admin";
-          }
-        });
-
-        $scope.pageChanged = function(newPage) {
-          $scope.page = newPage;
+        // to do: test function
+        this.pageChanged = (newPage) => {
+          this.page = newPage;
         };
-
-        $scope.startCourse = function(course) {
+        // to do: test function
+        this.startCourse = (course) => {
           $state.go('courseshow', {
             courseId: course
           });
         };
-
-        $scope.editCourse = function(course) {
+        // to do: test function
+        this.editCourse = (course) => {
           $state.go('courseupdate', {
             courseId: course
           });

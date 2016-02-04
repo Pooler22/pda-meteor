@@ -1,42 +1,42 @@
 <md-content layout="row" layout-align="center start" layout-fill layout-margin>
   <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
-    <md-toolbar class="md-primary " layout="column" layout-align="end" layout-fill>
+    <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
       <div layout="row" class="md-toolbar-tools ">
         <h3 class="md-display-1">Logowanie</h3>
       </div>
     </md-toolbar>
 
     <div layout="column" layout-fill layout-margin layout-padding>
-      <div layout="row" layout-fill layout-margin>
+      <div layout="row" layout-fill>
         <p class="md-body-2">Zaloguj się przy użyciu:</p>
         <md-button class="md-raised" ng-click="login.loginFacebook()">
           <span>Facebook</span>
         </md-button>
       </div>
+
       <md-divider class="inset"></md-divider>
 
-      <form name="loginForm" layout="column" ng-submit="login.login()"  layout-fill layout-padding layout-margin>
+      <form name="loginForm" layout="column" ng-submit="login.login()" layout-fill layout-margin>
         <md-input-container>
-          <label> Email </label>
+          <label>
+            Email
+          </label>
           <input type="email" ng-model="login.credentials.email" aria-label="email" required/>
         </md-input-container>
         <md-input-container>
-          <label> Hasło </label>
+          <label>
+            Hasło
+          </label>
           <input type="password" ng-model="login.credentials.password" aria-label="hasło" required/>
         </md-input-container>
-        <div layout="row" layout-align="space-between center">
-          <a class="md-button" href="/resetpw">Zapomniałeś hasło?</a>
-          <md-button class="md-raised md-primary" type="submit" aria-label="login"
-                     ng-disabled="login.loginForm.$invalid()">Zaloguj się
+          <md-button class="md-raised md-primary" type="submit" aria-label="login-button" ng-disabled="loginForm.$invalid">Zaloguj się
           </md-button>
-        </div>
       </form>
       <md-divider></md-divider>
       <div layout="row" layout-align="center">
-        <a class="md-button" href="/register">Potrzebujesz konto?</a>
+        <a class="md-button md-raised" href="/resetpw">Zapomniałeś hasło?</a>
+        <a class="md-button md-raised" href="/register">Potrzebujesz konto?</a>
       </div>
-
     </div>
-
   </md-whiteframe>
 </md-content>

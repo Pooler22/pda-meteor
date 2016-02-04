@@ -9,22 +9,25 @@ angular.module('pdaApp')
       controller: function($scope, $stateParams, $state, $reactive, $mdToast) {
         $reactive(this).attach($scope);
 
+        // to do: test function
         //to do: repair subscribe
-        $scope.subscribe('pages');
-        $scope.subscribe('courses');
-        $scope.helpers({
-          editorOptions: function() {
+        this.subscribe('pages');
+        this.subscribe('courses');
+        // to do: test function
+        this.helpers({
+          // to do: test function
+          editorOptions: () => {
             return {
               lineNumbers: true,
               mode: "javascript"
             };
           },
-
-          editorCode: function() {
+          // to do: test function
+          editorCode: () => {
             return "Code to show in editor";
           },
-
-          course: function() {
+          // to do: test function
+          course: () => {
             Meteor.call('prepareStructure', $stateParams.courseId, Meteor.userId(), (error) => {
               if (error) {
                 //to do dialog
@@ -32,14 +35,15 @@ angular.module('pdaApp')
             });
             return Courses.findOne($stateParams.courseId);
           },
-          pages: function() {
+          // to do: test function
+          pages: () => {
             return Pages.find({
               "ownerId": $stateParams.courseId
             });
           }
         });
-
-        $scope.codemirrorLoaded = function(_editor) {
+        // to do: test function
+        this.codemirrorLoaded = (_editor)=> {
           // Editor part
           var _doc = _editor.getDoc();
           _editor.focus();
@@ -47,17 +51,16 @@ angular.module('pdaApp')
           _editor.setOption('firstLineNumber', 10);
 
         };
-        $scope.editorOptions = {
+        // to do: test function
+        this.editorOptions = {
           lineWrapping: true,
           lineNumbers: true,
           mode: 'text/x-java',
           autofocus: true,
         };
-        $scope.isSomething = true;
-
-
-
-        $scope.containsWorld = function(searchArray, code) {
+        this.isSomething = true;
+        // to do: test function
+        this.containsWorld = (searchArray, code) => {
           var element = null;
           for (var i = 0; i < searchArray.length; i++) {
             if (code.indexOf(searchArray[i]) !== -1) {
@@ -67,8 +70,8 @@ angular.module('pdaApp')
           }
           return "";
         };
-
-        $scope.containsWorld1 = function(searchArray, code) {
+        // to do: test function
+        this.containsWorld1 = (searchArray, code) => {
           var element = null;
           for (var i = 0; i < searchArray.length; i++) {
             if (code.indexOf(searchArray[i]) === -1) {
@@ -78,8 +81,8 @@ angular.module('pdaApp')
           }
           return "";
         };
-
-        $scope.runCode = function(page) {
+        // to do: test function
+        this.runCode = (page) => {
           page.result = this.containsWorld(page.forbiddenWords, page.startupCode) +
             this.containsWorld1(page.requiredWords, page.startupCode)
           Meteor.call('checkCode', $stateParams.courseId, page._id, Meteor.userId(), page.startupCode, (error, response) => {
@@ -89,10 +92,9 @@ angular.module('pdaApp')
             } else {
               page.result = response;
             }
-            $scope.$apply();
+            this.$apply();
           });
         };
-
       }
     };
   });

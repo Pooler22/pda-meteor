@@ -3,7 +3,8 @@
 
     <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
       <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
-        <h3 class="md-display-1"> Zarejestruj nowe konto</h3>
+        <h3 class="md-display-1">
+          Zarejestruj nowe konto</h3>
       </div>
     </md-toolbar>
 
@@ -27,24 +28,27 @@
           <input type="text" ng-model="register.credentials.lastName" placeholder="nazwisko" aria-label="lastName" required/>
         </md-input-container>
         <md-input-container>
-          <label> Email </label>
+          <label>
+            Email
+          </label>
           <input type="email" ng-model="register.credentials.email" placeholder="email" aria-label="email" required/>
         </md-input-container>
         <md-input-container>
-          <label> Hasło </label>
+          <label>
+            Hasło
+          </label>
           <input type="password" ng-model="register.credentials.password" placeholder="hasło" aria-label="password" required/>
         </md-input-container>
-        <div layout="row" layout-align="end center">
-          <md-button class="md-raised md-primary" type="submit" aria-label="login" ng-disabled="register.registerForm.$invalid()">Zarejestruj się</md-button>
-        </div>
+          <md-button class="md-raised md-primary" type="submit" aria-label="login" ng-disabled="registerForm.$invalid" layout-fill >Zarejestruj się</md-button>
+
       </form>
 
       <md-divider></md-divider>
+
       <div layout="row" layout-align="center">
-        <a class="md-button" href="/login">Posiadasz już konto?</a>
+        <a class="md-button md-raised" href="/login">Posiadasz już konto?</a>
       </div>
 
     </div>
-
   </md-whiteframe>
 </md-content>
