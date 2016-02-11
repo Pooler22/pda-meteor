@@ -1,14 +1,14 @@
 <div layout="column" layout-fill ng-cloak>
   <md-content flex>
     <md-tabs md-dynamic-height md-border-bottom md-autoselect>
-      <md-tab label="{{ course.name }}">
+      <md-tab label="{{ courseshow.course.name }}">
         <md-content layout="column" layout-align="start center" layout-padding>
-          <h1>{{ course.name }}</h1>
-          <h2>{{ course.description }}</h2>
+          <h1>{{ courseshow.course.name }}</h1>
+          <h2>{{ courseshow.course.description }}</h2>
         </md-content>
       </md-tab>
 
-      <md-tab ng-repeat="page in pages" label="{{ page.name }}">
+      <md-tab ng-repeat="page in courseshow.pages" label="{{ page.name }}">
         <md-content layout="row">
           <div flex="30" layout-margin>
             <p>{{ page.description }}</p>
@@ -20,7 +20,7 @@
               <textarea ui-codemirror ui-codemirror-opts="editorOptions" ng-model="page.startupCode"></textarea>
             </md-input-container>
 
-            <md-button class="md-raised" ng-click="runCode(page)" flex="10">
+            <md-button class="md-raised" ng-click="courseshow.runCode(page)" flex="10">
               Uruchom kod
             </md-button>
 

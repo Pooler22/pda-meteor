@@ -9,10 +9,10 @@ angular.module('pdaApp')
       controller: function($scope, $state, $reactive, $mdToast) {
         $reactive(this).attach($scope);
 
-        this.newCoursename = {
+        this.newCourse = {
           name:'',
           description:'',
-          publicAcces:'',
+          publicAcces:false,
         };
         // to do: test function
         this.save = () => {

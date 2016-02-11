@@ -1,4 +1,4 @@
-describe('Testing course routes wihout login', function() {
+describe('Testing Course routes wihout login', function() {
   var  $rootScope, $location, $httpBackend, $state;
 
   beforeEach(function() {

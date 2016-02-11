@@ -1,27 +1,31 @@
 <md-content layout-padding layout="column">
-  <form ng-submit="courseupdate.editCourse()" layout="column">
-    <div layout="row">
-      <md-button class="md-primary md-raised" type="submit">Zapisz</md-button>
-      <md-button class="md-warn md-raised" ng-click="courseupdate.removeCourse()">Usuń kurs</md-button>
-      <md-button class="md-accent md-raised" ng-click="courseupdate.backToListCourse()">Wróć</md-button>
-    </div>
-    <md-input-container>
-      <span flex></span>
-      <label>Nazwa</label>
-      <input ng-model="courseupdate.course.name">
-    </md-input-container>
-    <span flex></span>
-    <md-input-container>
-      <label>Opis</label>
-      <textarea ng-model="courseupdate.course.description"></textarea>
-    </md-input-container>
-    <md-switch ng-model="courseupdate.course.publicAcces">
-      Dostęp publiczny
-    </md-switch>
-  </form>
-
   <md-tabs md-dynamic-height md-border-bottom md-autoselect class="md-whiteframe-2dp" md-selected="selectedIndex">
-    <md-tab ng-repeat="page in courseupdate.pages" label="{{ page.name }}">
+
+      <md-tab  label="Informacje o kursie">
+        <md-content layout="column">
+          <form ng-submit="courseupdate.editCourse()" layout="column">
+            <md-input-container>
+              <span flex></span>
+              <label>Nazwa</label>
+              <input ng-model="courseupdate.course.name">
+            </md-input-container>
+            <span flex></span>
+            <md-input-container>
+              <label>Opis</label>
+              <textarea ng-model="courseupdate.course.description"></textarea>
+            </md-input-container>
+            <md-switch ng-model="courseupdate.course.publicAcces">
+              Dostęp publiczny
+            </md-switch>
+            <div layout="row">
+              <md-button class="md-primary md-raised" type="submit">Zapisz kurs</md-button>
+              <md-button class="md-warn md-raised" ng-click="courseupdate.removeCourse()">Usuń kurs</md-button>
+            </div>
+          </form>
+        </md-content>
+      </md-tab>
+
+    <md-tab ng-repeat="page in courseupdate.pages" label="Strona: {{ page.name }}">
       <md-content layout="column">
         <form ng-submit="courseupdate.updatePage(page)" layout="column">
           <md-input-container>
@@ -80,18 +84,20 @@
 
           <md-content>
             <label>Zakazane słowa</label>
-            <md-chips ng-model="courseupdate.page.forbiddenWords" readonly="false">
+            <md-chips ng-model="page.forbiddenWords" readonly="false">
             </md-chips>
           </md-content>
 
           <md-content>
             <label>Wymagane słowa</label>
-            <md-chips ng-model="courseupdate.page.requiredWords" readonly="false">
+            <md-chips ng-model="page.requiredWords" readonly="false">
             </md-chips>
           </md-content>
 
-          <input class="md-button" type="submit" value="Zapisz zmiany">
-          <md-button ng-click="courseupdate.removePage(page._id)">Usuń stronę</md-button>
+          <div layout="row">
+            <md-button class="md-primary md-raised" type="submit">Zapisz zmiany</md-button>
+            <md-button class="md-warn md-raised" ng-click="courseupdate.removePage(page._id)">Usuń stronę</md-button>
+          </div>
         </form>
       </md-content>
     </md-tab>
@@ -108,8 +114,9 @@
             <label>Treść</label>
             <textarea ng-model="courseupdate.newPage.description" placeholder="Opis"></textarea>
           </md-input-container>
-
-          <input class="md-button" type="submit" value="Dodaj stronę">
+          <div layout="row">
+            <md-button class="md-primary md-raised" type="submit">Dodaj stronę</md-button>
+          </div>
         </form>
       </md-content>
     </md-tab>

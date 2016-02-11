@@ -16,7 +16,7 @@ angular.module('pdaApp')
           course: () => {
             return Courses.findOne({
               "_id": $stateParams.courseId,
-              "publicAcces": true
+              
             });
           },
           // to do: test function
@@ -54,13 +54,13 @@ angular.module('pdaApp')
         };
         // to do: test function
         this.pageObject = {
-          name:'',
-          description:'',
-          haveExercise:'',
-          startupCode:'',
-          forbiddenWords:'',
-          requiredWords:'',
-          startupFileName:'',
+          name: '',
+          description: '',
+          haveExercise: '',
+          startupCode: '',
+          forbiddenWords: '',
+          requiredWords: '',
+          startupFileName: '',
         };
         this.updatePage = (pageObject) => {
           Pages.update(pageObject._id, {
@@ -76,9 +76,9 @@ angular.module('pdaApp')
           });
         };
         // to do: test function
-        this.newFile ={
-          fileName:'',
-          fileCode:'',
+        this.newFile = {
+          fileName: '',
+          fileCode: '',
         };
         this.addFile = (pageId, newFile) => {
           Pages.update(pageId, {
@@ -91,9 +91,9 @@ angular.module('pdaApp')
           });
         };
         // to do: test function
-        this.oldFile ={
-          fileName:'',
-          fileCode:'',
+        this.oldFile = {
+          fileName: '',
+          fileCode: '',
         };
         this.removeFile = (pageId, oldFile) => {
           Pages.update(pageId, {

@@ -16,12 +16,7 @@ Schema.Course = new SimpleSchema({
     type: String,
   },
   "publicAcces": {
-    type: Boolean,
-    optional: true
-  },
-  "languages": {
-    type: [String],
-    optional: true
-  },
+    type: Boolean
+  }
 });
 Courses.attachSchema(Schema.Course);

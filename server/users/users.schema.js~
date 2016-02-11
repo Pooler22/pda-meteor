@@ -35,6 +35,10 @@ Schema.UserProfile = new SimpleSchema({
         regEx: SimpleSchema.RegEx.Url,
         optional: true
     },
+    bio: {
+        type: String,
+        optional: true
+    },
     country: {
         type: Schema.UserCountry,
         optional: true
