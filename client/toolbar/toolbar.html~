@@ -1,0 +1,19 @@
+<md-toolbar layout="row" layout-align="start center" class="toolbar md-whiteframe-8dp" layout-fill>
+  <navbar-left>
+    <md-button ng-href="/">Akademia wzorców projektowych</md-button>
+      <md-button ng-href="/course" ng-show="$auth.currentUser">Kursy</md-button>
+  </navbar-left>
+
+  <span class="flex"></span>
+
+  <navbar-right>
+    <div ng-hide="$auth.currentUser">
+      <md-button ng-href="/login">Logowanie</md-button>
+      <md-button ng-href="/register">Rejestracja</md-button>
+    </div>
+    <div ng-show="$auth.currentUser">
+      <md-button aria-label="name" >{{ toolbar.name() }}</md-button>
+      <md-button ng-click="toolbar.logout()">Wyloguj się</md-button>
+    
+  </navbar-right>
+</md-toolbar>

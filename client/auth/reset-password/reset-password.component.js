@@ -9,8 +9,7 @@ angular.module("pdaApp").directive('resetpw', function() {
       this.credentials = {
         email: ''
       };
-      // to do: test function
-      // to do: set settings to send email
+
       this.reset = () => {
         Accounts.forgotPassword(this.credentials, (err) => {
           if (err) {

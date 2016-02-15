@@ -12,7 +12,7 @@ angular.module("pdaApp").directive('login', function() {
         email: '',
         password: ''
       };
-      // to do: test function
+       
       this.login = (adadasd) => {
         Meteor.loginWithPassword(this.credentials.email, this.credentials
           .password, (err) => {
@@ -25,7 +25,7 @@ angular.module("pdaApp").directive('login', function() {
             }
           });
       };
-      // to do: test function
+       
       this.loginFacebook = () => {
         Meteor.loginWithFacebook({}, function(err) {
           if (err) {

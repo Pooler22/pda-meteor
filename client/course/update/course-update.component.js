@@ -7,26 +7,26 @@ angular.module('pdaApp')
       controllerAs: 'courseupdate',
       controller: function($scope, $state, $reactive, $mdToast, $stateParams) {
         $reactive(this).attach($scope);
-        // to do: test function
+
         this.subscribe('pages');
         this.subscribe('courses');
-        // to do: test function
+
         this.helpers({
-          // to do: test function
+
           course: () => {
             return Courses.findOne({
               "_id": $stateParams.courseId,
-              
+
             });
           },
-          // to do: test function
+
           pages: () => {
             return Pages.find({
               "ownerId": $stateParams.courseId
             });
           }
         });
-        // to do: test function
+
         this.editCourse = () => {
           Courses.update(this.course._id, {
             $set: {
@@ -36,15 +36,14 @@ angular.module('pdaApp')
             }
           });
         };
-        //todo remove id owner from pages and exercise
-        // to do: test function
+         
         this.removeCourse = () => {
           Courses.remove({
             _id: $stateParams.courseId
           });
           this.backToListCourse();
         };
-        // to do: test function
+
         this.createPage = function() {
           this.newPage.forbiddenWords = ["import"];
           this.newPage.requiredWords = ["class"];
@@ -52,22 +51,30 @@ angular.module('pdaApp')
           Meteor.call('createPage', this.newPage);
           this.newPage = undefined;
         };
-        // to do: test function
+
         this.pageObject = {
           name: '',
           description: '',
           haveExercise: '',
           startupCode: '',
+          runCommand: '',
           forbiddenWords: '',
           requiredWords: '',
           startupFileName: '',
         };
+
+        this.newFile = {
+          fileName: '',
+          fileCode: '',
+        };
+
         this.updatePage = (pageObject) => {
           Pages.update(pageObject._id, {
             $set: {
               "name": pageObject.name,
               "description": pageObject.description,
               "haveExercise": pageObject.haveExercise,
+              "runCommand": pageObject.runCommand,
               "startupCode": pageObject.startupCode,
               "forbiddenWords": pageObject.forbiddenWords,
               "requiredWords": pageObject.requiredWords,
@@ -75,12 +82,10 @@ angular.module('pdaApp')
             }
           });
         };
-        // to do: test function
-        this.newFile = {
-          fileName: '',
-          fileCode: '',
-        };
+
         this.addFile = (pageId, newFile) => {
+          console.log("działa");
+          console.log(newFile);
           Pages.update(pageId, {
             $push: {
               "files": {
@@ -89,8 +94,12 @@ angular.module('pdaApp')
               },
             }
           });
+          this.newFile = {
+            fileName: '',
+            fileCode: '',
+          };
         };
-        // to do: test function
+
         this.oldFile = {
           fileName: '',
           fileCode: '',
@@ -105,13 +114,13 @@ angular.module('pdaApp')
             }
           });
         };
-        // to do: test function
+
         this.removePage = (pageObjectId) => {
           Pages.remove({
             _id: pageObjectId
           });
         };
-        // to do: test function
+
         this.backToListCourse = () => {
           $state.go('courseindex');
         };

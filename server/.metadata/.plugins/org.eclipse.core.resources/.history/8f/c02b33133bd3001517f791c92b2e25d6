@@ -1,0 +1,17 @@
+package sampleCoursesCode;
+
+class Element {
+	private static Element instance = null;
+	int id;
+
+	public static Element getInstance() {
+		if (instance == null) {
+			instance = new Element();
+		}
+		return instance;
+	}
+
+	public void setId(int value) {
+		id = value;
+	}
+}

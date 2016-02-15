@@ -1,0 +1,24 @@
+package sampleCoursesCode;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FacadeTest {
+
+	@Test
+	public void testSetOnly1() {
+		Facade facade = new Facade();
+		Element element;
+		ElementExt elementExt;
+		
+		facade.SetOnly1(10);
+		
+		element = Element.getInstance();
+		elementExt = ElementExt.getInstance();
+		
+		assertEquals(10,element.getId());
+		assertNotEquals(10, elementExt.getId());
+	}
+
+}

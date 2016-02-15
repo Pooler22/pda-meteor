@@ -1,0 +1,24 @@
+package sampleCoursesCode;
+
+class Facade {
+	private Element e1;
+	private ElementExt e2;
+
+	public Facade() {
+		e1 = Element.getInstance();
+		e2 = ElementExt.getInstance();
+	}
+
+	public void SetOnly1(int i) {
+		e1.setId(i);
+	}
+
+	public void SetOnly2(int i) {
+		e2.setId(i);
+	}
+
+	public void SetBoth(int i) {
+		e1.setId(i);
+		e2.setId(i);
+	}
+}

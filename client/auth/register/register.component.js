@@ -14,7 +14,7 @@ angular.module("pdaApp").directive('register', function() {
         firstName: '',
         lastName: ''
       };
-      // to do: test function
+       
       this.register = () => {
         Accounts.createUser(this.credentials, (err) => {
           if (err) {
@@ -26,7 +26,7 @@ angular.module("pdaApp").directive('register', function() {
           }
         });
       };
-      // to do: test function
+       
       this.loginFacebook = () => {
         Meteor.loginWithFacebook({}, function(err) {
           if (err) {

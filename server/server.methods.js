@@ -1,4 +1,4 @@
-//to do: check
+
 Meteor.startup(function() {
   Meteor.methods({
     runCode: function(userCode) {
@@ -12,9 +12,9 @@ Meteor.startup(function() {
       var command = userCode;
       exec(command, function(error, stdout, stderr) {
         if (error) {
-          future.return(error.toString());
-        }
-        else{
+          future.return(stdout.toString());
+
+        } else {
           future.return(stdout.toString());
         }
       });
@@ -23,8 +23,12 @@ Meteor.startup(function() {
 
     prepareStructure: function(courseId, UserId) {
       var fs = Npm.require('fs');
-      var pages = Pages.find({ "ownerId": courseId, "haveExercise": true }).fetch();
-      var startPath = process.env.PWD + "/.usersCodes/" + courseId + "/";
+      var pages = Pages.find({
+        "ownerId": courseId,
+        "haveExercise": true
+      }).fetch();
+      var startPath = process.env.PWD + "/.usersCodes/" + courseId +
+        "/";
 
       for (var i = 0; i < pages.length; i++) {
         var uniquePath = pages[i]._id + "/" + UserId + "/";
@@ -32,7 +36,8 @@ Meteor.startup(function() {
         Meteor.call('runCode', "mkdir -p " + filePath);
 
         for (var j = 0; j < pages[i].files.length; j++) {
-          fs.writeFileSync(filePath + pages[i].files[j].fileName, pages[i].files[j].fileCode, 'utf8');
+          fs.writeFileSync(filePath + pages[i].files[j].fileName,
+            pages[i].files[j].fileCode, 'utf8');
         }
         return true;
       }
@@ -40,17 +45,27 @@ Meteor.startup(function() {
 
     checkCode: function(courseId, pageId, UserId, codeToTest) {
       var fs = Npm.require('fs');
-      var filePath = process.env.PWD + "/.usersCodes/" + courseId + "/" + pageId + "/" + UserId + "/";
+      var filePath = process.env.PWD + "/.usersCodes/" + courseId +
+        "/" + pageId + "/" + UserId + "/";
 
-      fs.writeFileSync(filePath + Pages.findOne(pageId).startupFileName, codeToTest, 'utf8');
+      fs.writeFileSync(filePath + Pages.findOne(pageId).startupFileName,
+        codeToTest, 'utf8');
 
       var respons;
-      respons = Meteor.call('runCode', "javac " + filePath + "*.java -d " + filePath);
-      if(respons === ""){
-        respons += Meteor.call('runCode', "cd " + filePath + "&& java Fasade.TestFasade");
-      }
-      else{
-        respons = respons.replace(" Command failed: " + filePath, " ");
+      respons = Meteor.call('runCode', "cd " + filePath +
+        "&& javac -cp .:\"" +
+        process.env.PWD +
+        "/.usersCodes/junit/junit.jar\" " +
+        "*.java");
+
+      if (respons === "") {
+        respons += Meteor.call('runCode', "cd " + filePath +
+          " && java -cp .:\"" + process.env.PWD +
+          "\"/.usersCodes/junit/* org.junit.runner.JUnitCore " +
+          Pages.findOne(pageId).runCommand);
+      } else {
+        //respons = respons.replace(" Command failed: " + filePath,
+        //  " ");
       }
       return respons;
     },

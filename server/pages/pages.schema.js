@@ -33,6 +33,10 @@ Schema.Page = new SimpleSchema({
     type: String,
     optional: true
   },
+  "runCommand": {
+    type: String,
+    optional: true
+  },
   "files": {
     type: [{
       "fileName": {
@@ -47,4 +51,4 @@ Schema.Page = new SimpleSchema({
     optional: true
   }
 });
-Pages.attachSchema(Schema.Page);
+//Pages.attachSchema(Schema.Page);

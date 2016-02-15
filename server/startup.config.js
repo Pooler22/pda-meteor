@@ -1,6 +1,6 @@
 Meteor.startup(function() {
   if (Courses.find().count() === 0) {
-    // to do: add course about best practise
+
     var courses = [{
       "name": "Fasada",
       "description": "ang. Fasade",

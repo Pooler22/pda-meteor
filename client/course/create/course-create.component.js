@@ -14,7 +14,7 @@ angular.module('pdaApp')
           description:'',
           publicAcces:false,
         };
-        // to do: test function
+         
         this.save = () => {
           Meteor.call('addCourse', this.getReactively('newCourse'), (err, id) => {
             if (err) {
@@ -25,13 +25,13 @@ angular.module('pdaApp')
             }
           });
         };
-        // to do: test function
+         
         this.goToEditCoursePage = (id) =>{
           $state.go('courseupdate', {
             courseId: id
           });
         };
-        // to do: test function
+         
         this.backToListCourse = () => {
           $state.go('courseindex');
         };

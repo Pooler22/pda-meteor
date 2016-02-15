@@ -47,6 +47,11 @@
           </md-input-container>
 
           <md-input-container>
+            <label>Komenda uruchamiająca testy</label>
+            <textarea ng-model="page.runCommand"></textarea>
+          </md-input-container>
+
+          <md-input-container>
             <label>Kod początkowy</label>
             <textarea ng-model="page.startupCode"></textarea>
           </md-input-container>
@@ -63,12 +68,12 @@
                 <label>Treść pliku</label>
                 <textarea ng-model="item.fileCode"></textarea>
               </md-input-container>
-              <md-button ng-click="removeFile(page._id, item.fileName)">Usuń plik</md-button>
+              <md-button ng-click="courseupdate.removeFile(page._id, item.fileName)">Usuń plik</md-button>
             </md-content>
              </md-list-item>
           </md-list>
 
-          <md-content ng-model="newFile" layout="column" class="md-whiteframe-4dp" layout-padding>
+          <md-content ng-model="courseupdate.newFile" layout="column" class="md-whiteframe-4dp" layout-padding>
             <md-subheader>Dodaj plik dodatkowy:</md-subheader>
             <md-input-container>
               <label>Nazwa pliku</label>
@@ -78,7 +83,7 @@
               <label>Kod pliku</label>
               <textarea ng-model="courseupdate.newFile.fileCode"></textarea>
             </md-input-container>
-            <md-button ng-click="courseupdate.addFile(page._id, newFile)">Dodaj plik</md-button>
+            <md-button ng-click="courseupdate.addFile(page._id, courseupdate.newFile)">Dodaj plik</md-button>
           </md-content>
 
 

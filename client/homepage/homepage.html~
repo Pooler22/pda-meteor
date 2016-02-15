@@ -1,0 +1,26 @@
+<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+  <md-whiteframe layout="column" flex flex-md="70" flex-lg="70" flex-gt-lg="50" class="md-whiteframe-z2" layout-fill>
+    <md-toolbar class="md-primary" layout="column" layout-align="end" layout-fill>
+      <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+        <h3 class="md-display-1">Akademia wzorców projektowych</h3>
+      </div>
+    </md-toolbar>
+    <div layout="column" layout-fill layout-margin layout-padding>
+      <div ng-hide="$auth.currentUser">
+        <h3>Jak działa Akademia wzorców projektowych?</h3>
+        <p>Po zalogowaniu dostajesz dostęp do bazy z kursami do nauki wzorców projektowych i zasad dobrego programowania.</p>
+        <p>Każdy kurs podzeilony jest na rozdziały, w których zapoznasz się z wiedzą teoretyczną.</p>
+        <p>Dodatkowo w kursach znajdują się ćwiczenia praktyczne.</p>
+        <p>Aby zacząć naukę zarejestruj i zaloguj.</p>
+        <div layout="row" layout-fill>
+          <md-button class="md-raised md-primary" ng-href="/register">Rejestracja</md-button>
+          <md-button class="md-raised md-primary" ng-href="/login">Logowanie</md-button>
+        </div>
+      </div>
+      <div ng-show="$auth.currentUser" layout-padding>
+        <p >Witaj {{ toolbar.name() }}</p>
+        <md-button class="md-raised md-primary" ng-click="toolbar.logout()" >Wyloguj się</md-button>
+      </div>
+    </div>
+  </md-whiteframe>
+</md-content>
